@@ -18,7 +18,7 @@ namespace BestofBooks.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult InventoryList()
         {
             return View();
         }
