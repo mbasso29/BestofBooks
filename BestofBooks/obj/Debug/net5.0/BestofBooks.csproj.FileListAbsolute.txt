@@ -37,3 +37,5 @@ C:\GitHub\BestofBooks\BestofBooks\obj\Debug\net5.0\BestofBooks.pdb
 C:\GitHub\BestofBooks\BestofBooks\obj\Debug\net5.0\BestofBooks.genruntimeconfig.cache
 C:\GitHub\BestofBooks\BestofBooks\obj\Debug\net5.0\BestofBooks.csproj.CopyComplete
 C:\GitHub\BestofBooks\BestofBooks\obj\Debug\net5.0\Razor\Views\Home\InventoryList.cshtml.g.cs
+C:\GitHub\BestofBooks\BestofBooks\obj\Debug\net5.0\Razor\Views\Home\Reports.cshtml.g.cs
+C:\GitHub\BestofBooks\BestofBooks\obj\Debug\net5.0\Razor\Views\Home\Search.cshtml.g.cs
