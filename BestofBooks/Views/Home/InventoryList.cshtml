@@ -1,9 +1,47 @@
 ﻿@{
     ViewData["Title"] = "Inventory";
 }
-<link rel="stylesheet" href="~/css/site.css" />
-
-<div class="text-center">
-    <h1 style="text-align:center">Welcome to Best of Books!</h1>
-    <img src="@Url.Content("~/Images/BestofBooks.png")" style="display:block; margin-left: auto; margin-right: auto; width: 50%" />
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BestofBooks</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/inventorylist-jquery.js"></script>
+    <script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid my-4">
+    <div class="text-center m-auto">
+        <h1 class="text-center text-wrap" style="color: #537DA5">Welcome to Best of Books!</h1>
+        <img src="@Url.Content("~/Images/BestofBooks.png")" class="img-fluid" style="width:15em"/>
+    </div>
+    </div>
+    <div class="container-fluid">
+        <div class="table-responsive-md" id="inventoryListTable">
+            <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #537DA5" cellspacing=2 cellpadding=5 id="data_table" border=1>
+                <tr class="text-center">
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Location</th>
+                    <th><span class="add-row"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'">Add</i></span></th>
+                </tr>
+                <!-- hidden row-->
+                <tr class="hidden text-center">
+                    <td contenteditable="true" id="isbn_text">Enter ISBN</td>
+                    <td contenteditable="true" id="title_text">Enter Title</td>
+                    <td contenteditable="true" id="author_text">Enter Author Name</td>
+                    <td contenteditable="true" id="genre_text">Enter Genre</td>
+                    <td contenteditable="true" id="location">Enter Location</td>
+                    <td><span class="delete-row"><i class="fa-solid fa-trash"></i></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -6,12 +6,13 @@
     <title>@ViewData["Title"] - BestofBooks</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://kit.fontawesome.com/f9f4cabcd6.css" crossorigin="anonymous">
 </head>
-<body style="background-color:#DAEDE2">
+<body style="background-color: #DAEDE2; font-family:'Bookman Old Style'">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #DBD9CA">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="InventoryList">BestofBooks</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="InventoryList" style="Color: #537DA5; font-weight:bold">BestofBooks</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,12 +36,10 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
-            <h1 style="text-align:center">Welcome to Best of Books!</h1>
-            <img src="@Url.Content("~/Images/BestofBooks.png")" style="display:block; margin-left: auto; margin-right: auto; width: 50%" />
         </main>
     </div>
 
-    <footer class="border-top footer text-muted bg-white">
+    <footer class="border-top footer text-muted" style="background-color: #DBD9CA">
         <div class="container">
             &copy; 2023 - BestofBooks - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
