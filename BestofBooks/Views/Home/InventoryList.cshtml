@@ -19,28 +19,26 @@
         <img src="@Url.Content("~/Images/BestofBooks.png")" class="img-fluid" style="width:15em"/>
     </div>
     </div>
-    <div class="container-fluid">
-        <div class="table-responsive-md" id="inventoryListTable">
-            <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #537DA5" cellspacing=2 cellpadding=5 id="data_table" border=1>
-                <tr class="text-center">
-                    <th>ISBN</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Genre</th>
-                    <th>Location</th>
-                    <th><span class="add-row"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'">Add</i></span></th>
-                </tr>
-                <!-- hidden row-->
-                <tr class="hidden text-center">
-                    <td contenteditable="true" id="isbn_text">Enter ISBN</td>
-                    <td contenteditable="true" id="title_text">Enter Title</td>
-                    <td contenteditable="true" id="author_text">Enter Author Name</td>
-                    <td contenteditable="true" id="genre_text">Enter Genre</td>
-                    <td contenteditable="true" id="location">Enter Location</td>
-                    <td><span class="delete-row"><i class="fa-solid fa-trash"></i></span></td>
-                </tr>
-            </table>
-        </div>
+    <div class="container-fluid table-responsive" id="inventoryListTable">
+        <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #537DA5; margin: auto; width: 50%;" cellspacing=2 cellpadding=5 id="data_table" border="1">
+            <tr class="text-center">
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Location</th>
+                <th><span class="add-row"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'">Add</i></span></th>
+            </tr>
+            <!-- hidden row-->
+            <tr class="hidden text-center">
+                <td contenteditable="true" id="isbn_text">Enter ISBN</td>
+                <td contenteditable="true" id="title_text">Enter Title</td>
+                <td contenteditable="true" id="author_text">Enter Author Name</td>
+                <td contenteditable="true" id="genre_text">Enter Genre</td>
+                <td contenteditable="true" id="location">Enter Location</td>
+                <td><span class="delete-row"><i class="fa-solid fa-trash"></i></span></td>
+            </tr>
+        </table>
     </div>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
