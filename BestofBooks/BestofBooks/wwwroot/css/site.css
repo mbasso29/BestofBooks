@@ -86,24 +86,98 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-
+/* Top Nav and Tab styles - excludes Login link
+-------------------------------------------------- */
 .navLink {
     display: block;
     padding: 0.5rem 1rem;
-    color: #0429AC;
-}
-.navLink:hover, .navLink:focus {
-     text-decoration: none;
-     color: indigo;
-     font-weight: bold;
+    color: orange;
 }
 
-.navLink.disabled {
-    pointer-events: none;
-    cursor: default;
-}
+    .navLink:hover, .navLink:focus {
+        text-decoration: none;
+        color: aqua;
+        font-weight: bold;
+    }
+
+    .navLink.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
 
     .navLink[aria-current="page"] {
-        background-color: #0429AC;
-        color: #DAEDE2;
+        background-color: crimson;
     }
+
+/* Top  Login Link Nav styles - kept separate to remove from aria styling
+-------------------------------------------------- */
+.loginLink {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: orange;
+}
+
+    .loginLink:hover, .loginLink:focus {
+        text-decoration: none;
+        color: orange;
+        font-weight: bold;
+    }
+
+    .loginLink.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+
+/* createAccount Form styles
+-------------------------------------------------- */
+#createAccountForm {
+    margin: 0 auto;
+    width: 60%;
+    position: relative;
+    font-family: "Bookshelf Old Style", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    line-height: 20px;
+}
+
+    #createAccountForm select, input[type="text"], input[type=email], textarea {
+        background-color: #D9D9D9;
+        margin-bottom: 25px;
+    }
+
+    #createAccountForm button {
+        padding: 10px 20px;
+    }
+
+/* Login Form styles
+-------------------------------------------------- */
+#loginForm {
+    margin: 0 auto;
+    width: 60%;
+    position: relative;
+    font-family: "Bookshelf Symbol 7", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    line-height: 20px;
+}
+
+    #loginForm select, input[type="text"], input[type=email], input[type=password], textarea {
+        background-color: #D9D9D9;
+        margin-bottom: 25px;
+    }
+
+    #loginForm button {
+        padding: 10px 20px;
+        margin-top: 50px;
+    }
+
+/* Admin Table Styles
+-------------------------------------------------- */
+#adminListTable h2 {
+    margin: 0 auto;
+    width: 60%;
+    position: relative;
+    text-align: center;
+}
