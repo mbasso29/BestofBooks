@@ -15,30 +15,32 @@
 <body>
     <div class="container-fluid my-4">
     <div class="text-center m-auto">
-        <h1 class="text-center text-wrap" style="color: #537DA5">Welcome to Best of Books!</h1>
+            <h1 class="text-center text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
         <img src="@Url.Content("~/Images/BestofBooks.png")" class="img-fluid" style="width:15em"/>
     </div>
     </div>
     <div class="container-fluid table-responsive" id="inventoryListTable">
-        <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #537DA5; margin: auto; width: 50%;" cellspacing=2 cellpadding=5 id="data_table" border="1">
+        <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #0429AC; margin: auto; width: 50%;" cellspacing=2 cellpadding=5 id="data_table" border="1">
             <tr class="text-center">
                 <th>ISBN</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Genre</th>
                 <th>Location</th>
-                <th><span class="add-row"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'">Add</i></span></th>
             </tr>
             <!-- hidden row-->
             <tr class="hidden text-center">
-                <td contenteditable="true" id="isbn_text">Enter ISBN</td>
-                <td contenteditable="true" id="title_text">Enter Title</td>
-                <td contenteditable="true" id="author_text">Enter Author Name</td>
-                <td contenteditable="true" id="genre_text">Enter Genre</td>
-                <td contenteditable="true" id="location">Enter Location</td>
+                <td contenteditable="true" id="isbn_text" style="background-color: #f5f5f5">Enter ISBN</td>
+                <td contenteditable="true" id="title_text" style="background-color: #f5f5f5">Enter Title</td>
+                <td contenteditable="true" id="author_text" style="background-color: #f5f5f5">Enter Author Name</td>
+                <td contenteditable="true" id="genre_text" style="background-color: #f5f5f5">Enter Genre</td>
+                <td contenteditable="true" id="location" style="background-color: #f5f5f5">Enter Location</td>
                 <td><span class="delete-row"><i class="fa-solid fa-trash"></i></span></td>
             </tr>
         </table>
+        <div class="container text-center">
+        <button id="addBtn" name="Add"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'">Add</i></button>
+        </div>
     </div>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
