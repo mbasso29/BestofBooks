@@ -16,29 +16,33 @@
     <div class="container-fluid my-4">
     <div class="text-center m-auto">
             <h1 class="text-center text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
-        <img src="@Url.Content("~/Images/BestofBooks.png")" class="img-fluid" style="width:15em"/>
+        <img src="@Url.Content("~/Images/BestofBooks.png")" class="img-fluid" style="width:10em; padding-bottom:8em"/>
     </div>
     </div>
-    <div class="container-fluid table-responsive" id="inventoryListTable">
-        <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #0429AC; margin: auto; width: 50%;" cellspacing=2 cellpadding=5 id="data_table" border="1">
+    <div class="container table float-left" id="inventoryListTable">
+        <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #0429AC; margin: auto;" cellspacing=2 cellpadding=5 id="data_table" border="1">
             <tr class="text-center">
                 <th>ISBN</th>
                 <th>Title</th>
-                <th>Author</th>
+                <th>Author First Name</th>
+                <th>Author Last Name</th>
                 <th>Genre</th>
                 <th>Location</th>
+                <th>Price</th>
             </tr>
             <!-- hidden row-->
             <tr class="hidden text-center">
-                <td contenteditable="true" id="isbn_text" style="background-color: #f5f5f5">Enter ISBN</td>
-                <td contenteditable="true" id="title_text" style="background-color: #f5f5f5">Enter Title</td>
-                <td contenteditable="true" id="author_text" style="background-color: #f5f5f5">Enter Author Name</td>
-                <td contenteditable="true" id="genre_text" style="background-color: #f5f5f5">Enter Genre</td>
-                <td contenteditable="true" id="location" style="background-color: #f5f5f5">Enter Location</td>
+                <td contenteditable="true" id="isbn_text"><input size="10" type="text" value="___-__-____-_" data-mask="___-__-____-_"/></td>
+                <td contenteditable="true" id="title_text"><input type="text" size="15" placeholder="Type the Title here..." /></td>
+                <td contenteditable="true" id="authorFName_text"><input type="text" size="15" placeholder="Type the Author First Name here..." /></td>
+                <td contenteditable="true" id="authorLName_text"><input type="text" size="15" placeholder="Type the Author Last Name here..." /></td>
+                <td contenteditable="true" id="genre_text"><input type="text" size="10" placeholder="Type the genre here..." /></td>
+                <td contenteditable="true" id="location"><input type="text" size="6" placeholder="Type the location here..." /></td>
+                <td contenteditable="true" id="location"><input type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
                 <td><span class="delete-row"><i class="fa-solid fa-trash"></i></span></td>
             </tr>
         </table>
-        <div class="container text-center">
+        <div class="container text-right">
         <button id="addBtn" name="Add"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'">Add</i></button>
         </div>
     </div>
