@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2j0+HFvky2y7lfWL6B3Dr7Oc4WG4VXpcfTZ54di396JWzW7S3WEHR5cRvqz175IOM6JDqIF9R7Ei74AUE/s6Kg==",
+  "dgSpecHash": "wdJU0ggr5YMIfDGJPQZBrBnTWr+JQSbX6/XGgtcJIeQn/w5U57RDZIM2RLV+IK/IrdmAkuI9ZGAIzusAEOv9/Q==",
   "success": true,
-  "projectFilePath": "/Users/dereklewis/Projects/BestofBooks/BestofBooks/BestofBooks.csproj",
-  "expectedPackageFiles": [
-    "/Users/dereklewis/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.17/microsoft.netcore.app.host.osx-x64.5.0.17.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\BestofBooks.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
