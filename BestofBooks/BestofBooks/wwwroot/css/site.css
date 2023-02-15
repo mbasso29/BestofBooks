@@ -90,11 +90,11 @@ body {
 .navLink {
     display: block;
     padding: 0.5rem 1rem;
-    color: orange;
+    color: #0429AC;
 }
 .navLink:hover, .navLink:focus {
      text-decoration: none;
-     color: aqua;
+     color: indigo;
      font-weight: bold;
 }
 
@@ -103,6 +103,7 @@ body {
     cursor: default;
 }
 
-.navLink[aria-current="page"]{
-    background-color: crimson;
-}
+    .navLink[aria-current="page"] {
+        background-color: #0429AC;
+        color: #DAEDE2;
+    }
