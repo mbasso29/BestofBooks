@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Create Account";
+}
+@model UserModel
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"]</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
+
+<div class="container-fluid my-4">
+    <div class="text-center m-auto">
+        <h1 class="text-center text-wrap" style="color: #537DA5">Create an Account</h1>
+        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:5em" />
+    </div>
+</div>
+
+<div class="container-fluid">
+    <form asp-for="UserModel" id="createAccountForm">
+        <div>
+            <label for="firstName">First Name</label>
+        </div>
+        <div>
+            <input type="text" id="firstName" name="firstName" asp-for="@Model.FirstName" required />
+        </div>
+        <div>
+            <label for="lastName">Last Name</label>
+        </div>
+        <div>
+            <input type="text" id="lastName" name="lastName" asp-for="@Model.LastName" required />
+        </div>
+        <div>
+            <label for="email">E-mail</label>
+        </div>
+        <div>
+            <input type="email" id="email" name="email" asp-for="@Model.Email" required />
+        </div>
+        <div>
+            <label for="username">Username</label>
+        </div>
+        <div>
+            <input type="text" id="username" name="username" asp-for="@Model.Username" required />
+        </div>
+        <div>
+            <label for="password">Password</label>
+        </div>
+        <div>
+            <input type="text" id="password" name="password" asp-for="@Model.Password" required />
+        </div>
+        <div>
+            <label for="userType">User Type</label>
+        </div>
+        <div>
+            <select name="userType" id="userType" asp-for="@Model.UserType" required>
+                <option value="guest">Guest</option>
+                <option value="employee">Employee</option>
+            </select>
+        </div>
+        <button type="submit">Create<br />Account</button>
+    </form>
+</div>
+
+
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@section Scripts
+    {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @await Html.PartialAsync("Login")
+}

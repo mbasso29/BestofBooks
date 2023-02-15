@@ -8,32 +8,25 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\basso\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/dereklewis/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\BestofBooks.csproj",
+      "projectUniqueName": "/Users/dereklewis/Documents/GitHub/BestofBooks/BestofBooks/BestofBooks/BestofBooks.csproj",
       "projectName": "BestofBooks",
-      "projectPath": "C:\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\BestofBooks.csproj",
-      "packagesPath": "C:\\Users\\basso\\.nuget\\packages\\",
-      "outputPath": "C:\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\obj\\",
+      "projectPath": "/Users/dereklewis/Documents/GitHub/BestofBooks/BestofBooks/BestofBooks/BestofBooks.csproj",
+      "packagesPath": "/Users/dereklewis/.nuget/packages/",
+      "outputPath": "/Users/dereklewis/Documents/GitHub/BestofBooks/BestofBooks/BestofBooks/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\basso\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/dereklewis/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -70,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
       }
     }
   }

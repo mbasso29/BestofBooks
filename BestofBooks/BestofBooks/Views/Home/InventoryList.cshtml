@@ -1,51 +1,51 @@
 ﻿@{
     ViewData["Title"] = "Inventory";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BestofBooks</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <script src="~/js/inventorylist-jquery.js"></script>
-    <script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div class="container-fluid my-4">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - BestofBooks</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<script src="~/js/inventorylist-jquery.js"></script>
+<script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
+
+<div class="container-fluid my-4">
     <div class="text-center m-auto">
-            <h1 class="text-center text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
-        <img src="@Url.Content("~/Images/BestofBooks.png")" class="img-fluid" style="width:10em; padding-bottom:8em"/>
+        <h1 class="text-center text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
+        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:10em; padding-bottom:8em" />
     </div>
+</div>
+<div class="container">
+    <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #0429AC; margin: auto;" cellspacing=2 cellpadding=5 id="data_table" border="1">
+        <tr class="text-center">
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author First Name</th>
+            <th>Author Last Name</th>
+            <th>Genre</th>
+            <th>Location</th>
+            <th>Price</th>
+        </tr>
+        <!-- hidden row-->
+        <tr class="hidden text-center">
+            <td contenteditable="true" id="isbn_text"><input size="10" type="text" value="___-__-____-_" data-mask="___-__-____-_" /></td>
+            <td contenteditable="true" id="title_text"><input type="text" size="15" placeholder="Type the Title here..." /></td>
+            <td contenteditable="true" id="authorFName_text"><input type="text" size="15" placeholder="Type the Author First Name here..." /></td>
+            <td contenteditable="true" id="authorLName_text"><input type="text" size="15" placeholder="Type the Author Last Name here..." /></td>
+            <td contenteditable="true" id="genre_text"><input type="text" size="10" placeholder="Type the genre here..." /></td>
+            <td contenteditable="true" id="location"><input type="text" size="6" placeholder="Type the location here..." /></td>
+            <td contenteditable="true" id="location"><input type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
+            <td><span class="delete-row"><i class="fa-solid fa-trash"></i></span></td>
+        </tr>
+    </table>
+    <div class="container text-center" style="padding: 1em 0 1em 0">
+        <button id="addBtn" name="Add" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
     </div>
-    <div class="container">
-        <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #0429AC; margin: auto;" cellspacing=2 cellpadding=5 id="data_table" border="1">
-            <tr class="text-center">
-                <th>ISBN</th>
-                <th>Title</th>
-                <th>Author First Name</th>
-                <th>Author Last Name</th>
-                <th>Genre</th>
-                <th>Location</th>
-                <th>Price</th>
-            </tr>
-            <!-- hidden row-->
-            <tr class="hidden text-center">
-                <td contenteditable="true" id="isbn_text"><input size="10" type="text" value="___-__-____-_" data-mask="___-__-____-_"/></td>
-                <td contenteditable="true" id="title_text"><input type="text" size="15" placeholder="Type the Title here..." /></td>
-                <td contenteditable="true" id="authorFName_text"><input type="text" size="15" placeholder="Type the Author First Name here..." /></td>
-                <td contenteditable="true" id="authorLName_text"><input type="text" size="15" placeholder="Type the Author Last Name here..." /></td>
-                <td contenteditable="true" id="genre_text"><input type="text" size="10" placeholder="Type the genre here..." /></td>
-                <td contenteditable="true" id="location"><input type="text" size="6" placeholder="Type the location here..." /></td>
-                <td contenteditable="true" id="location"><input type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
-                <td><span class="delete-row"><i class="fa-solid fa-trash"></i></span></td>
-            </tr>
-        </table>
-        <div class="container text-center" style="padding: 1em 0 1em 0">
-            <button id="addBtn" name="Add" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
-        </div>
-    </div>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@section Scripts
+{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @await Html.PartialAsync("Login")
+}
