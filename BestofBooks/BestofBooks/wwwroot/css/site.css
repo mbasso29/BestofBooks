@@ -137,7 +137,9 @@ body {
         background-color: #DBD9CA;
         color: #0429AC;
     }
-
+    #loginModalLabel {
+        color: #0429AC;
+    }
 /* Admin Table Styles
 -------------------------------------------------- */
 #adminListTable h2 {
@@ -146,6 +148,11 @@ body {
     position: relative;
     text-align: center;
     padding: 1em;
+}
+
+#userType {
+    color: #0429AC;
+    background-color: #F5F5F5;
 }
 
 /* Input Styles 

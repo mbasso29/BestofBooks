@@ -5,7 +5,7 @@
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color:#DBD9CA">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="loginModalLabel">Log in or @Html.ActionLink("create an account.", "CreateAccount")</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -13,13 +13,13 @@
             <div class="modal-body">
                 <form id="loginForm" asp-for="UserModel">
                     <div>
-                        <label for="username">Username</label>
+                        <label for="username" style="color:#0429AC">Username</label>
                     </div>
                     <div>
                         <input type="text" id="username" name="username" asp-for="@Model.Username" required />
                     </div>
                     <div>
-                        <label for="password">Password</label>
+                        <label for="password" style="color:#0429AC">Password</label>
                     </div>
                     <div>
                         <input type="password" id="password" name="password" asp-for="@Model.Password" required />
@@ -27,8 +27,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Log In</button>
+                <button type="button" data-bs-dismiss="modal" style="color:#0429AC; background-color:#DAEDE2">Cancel</button>
+                <button type="button" style="color:#0429AC; background-color:#DAEDE2">Log In</button>
             </div>
         </div>
     </div>
