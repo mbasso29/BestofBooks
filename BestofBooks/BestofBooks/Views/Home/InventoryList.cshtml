@@ -11,13 +11,13 @@
 <script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
-    <div class="text-center m-auto">
-        <h1 class="text-center text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
-        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:10em; padding-bottom:8em" />
+    <div class="text-center">
+        <h1 class="text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
+        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:13em; padding-bottom:6em" />
     </div>
 </div>
-<div class="container">
-    <table class="table-hover table-bordered" style="background-color: #DBD9CA; color: #0429AC; margin: auto;" cellspacing=2 cellpadding=5 id="data_table" border="1">
+<div class="container text-center">
+    <table class="table-hover table-bordered align-items-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1">
         <tr class="text-center">
             <th>ISBN</th>
             <th>Title</th>
@@ -29,14 +29,14 @@
         </tr>
         <!-- hidden row-->
         <tr class="hidden text-center">
-            <td contenteditable="true" id="isbn_text"><input size="10" type="text" value="___-__-____-_" data-mask="___-__-____-_" /></td>
-            <td contenteditable="true" id="title_text"><input type="text" size="15" placeholder="Type the Title here..." /></td>
-            <td contenteditable="true" id="authorFName_text"><input type="text" size="15" placeholder="Type the Author First Name here..." /></td>
-            <td contenteditable="true" id="authorLName_text"><input type="text" size="15" placeholder="Type the Author Last Name here..." /></td>
-            <td contenteditable="true" id="genre_text"><input type="text" size="10" placeholder="Type the genre here..." /></td>
-            <td contenteditable="true" id="location"><input type="text" size="6" placeholder="Type the location here..." /></td>
-            <td contenteditable="true" id="location"><input type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
-            <td><span class="delete-row"><i class="fa-solid fa-trash"></i></span></td>
+            <td contenteditable="true" id="isbn_text"><input id="input-style" size="10" type="text" value="___-__-____-_" data-mask="___-__-____-_"/></td>
+            <td contenteditable="true" id="title_text"><input id="input-style" type="text" size="15" placeholder="Type the Title here..." /></td>
+            <td contenteditable="true" id="authorFName_text"><input id="input-style" type="text" size="15" placeholder="Type the Author First Name here..." /></td>
+            <td contenteditable="true" id="authorLName_text"><input id="input-style" type="text" size="15" placeholder="Type the Author Last Name here..." /></td>
+            <td contenteditable="true" id="genre_text"><input id="input-style" type="text" size="10" placeholder="Type the genre here..." /></td>
+            <td contenteditable="true" id="location"><input id="input-style" type="text" size="6" placeholder="Type the location here..." /></td>
+            <td contenteditable="true" id="location"><input id="input-style" type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
+            <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
         </tr>
     </table>
     <div class="container text-center" style="padding: 1em 0 1em 0">
