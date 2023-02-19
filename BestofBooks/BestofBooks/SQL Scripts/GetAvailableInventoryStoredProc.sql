@@ -1,3 +1,6 @@
+USE BestofBooks
+GO
+
 CREATE PROCEDURE GetAvailableInventory
 @InStock BIT = NULL,
 @AuthorName VARCHAR(255) = NULL,
