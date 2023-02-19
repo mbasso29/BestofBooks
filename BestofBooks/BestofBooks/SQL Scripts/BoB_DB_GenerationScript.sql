@@ -30,7 +30,7 @@ GO
 
 CREATE  TABLE Genre ( 
 	genre_id             int      NOT NULL,
-	genre_type           text      NULL,
+	genre_type           varchar(50)      NULL,
 	CONSTRAINT pk_genre PRIMARY KEY  ( genre_id ) 
  );
 GO
