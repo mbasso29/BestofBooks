@@ -53,6 +53,15 @@ namespace BestofBooks.Controllers
             return View();
         }
 
+        public IActionResult AvailableInventoryListReport()
+        {
+            return View();
+        }
+
+        public IActionResult ChangeHistoryReport()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

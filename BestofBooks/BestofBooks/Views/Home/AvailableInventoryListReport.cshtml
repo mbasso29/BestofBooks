@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Inventory Report";
+}
+@model BookModel
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<script src="~/js/inventorylist-jquery.js"></script>
+
+<div class="container-fluid my-4">
+    <div class="text-center">
+        <h1 class="text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
+        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:13em; padding-bottom:6em" />
+    </div>
+</div>
+
+
+<div class="container text-center">
+    <p style="color: #0429AC">Inventory List Report</p>
+    <select name="genre" id="genre" asp-for="@Model.Genre" required style="background-color:#F5F5F5; text-align:center">
+        <option value="" disabled selected>Select Genre</option>
+        <option value="adventure">Adventure</option>
+        <option value="science fiction">Science Fiction</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="romance">Romance</option>
+        <option value="mystery">Mystery</option>
+        <option value="horror">Horror</option>
+    </select>
+
+    <input type="text" name="authoer" id="author" asp-for="@Model.AuthorLast." placeholder="Select Author" required/>
+
+    <select name="inStock" id="inStock" asp-for="@Model.InStock" required style="background-color:#F5F5F5; text-align:center">
+        <option value="" disabled selected>Select In Stock</option>
+        <option value="all">All</option>
+        <option value="in stock">In Stock</option>
+        <option value="out stock">Out of Stock</option>
+    </select>
+
+</div>
+
+
+
+
+
+
+
+    @section Scripts
+{
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+        @await Html.PartialAsync("Login")
+    }
