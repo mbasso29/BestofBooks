@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+//Used to set background color of current page through aria controls
 document.querySelectorAll('.navLink').forEach
     (link => {
         if (link.href === window.location.href) {
@@ -48,4 +49,30 @@ function applyDataMask(field) {
 
     field.addEventListener('click', changed)
     field.addEventListener('keyup', changed)
+}
+
+/* Report Dropdown Button with Search- When the user clicks on the button,
+toggle between hiding and showing the dropdown content, filter */
+function dropdownState() {
+    document.getElementById("authorDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("authorInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("authorDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+function dropdownStateCHI() {
+    document.getElementById("dateRangeDropdown").classList.toggle("show");
 }
