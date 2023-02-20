@@ -111,7 +111,8 @@ body {
     #createAccountForm button {
         padding: 10px 20px;
         background-color: #DBD9CA;
-        color: #0429AC;
+        color: #004803;
+        border-color: #004803;
     }
 
 /* Login Form styles
@@ -151,7 +152,7 @@ body {
 }
 
 #userType {
-    color: #0429AC;
+    color: #004803;
     background-color: #F5F5F5;
 }
 
@@ -234,7 +235,7 @@ p {
 /* Report Dropdown  links inside the dropdown
 -------------------------------------------------- */
 .dropdown-content a {
-  color: black;
+  color: #004803;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -251,3 +252,38 @@ p {
     display: block;
 }
 
+/* Change History Report Button Stylings
+------------------------------------*/
+#inventoryReportSearchBtn {
+    color: #004803;
+    border-color: #004803;
+    background-color: #DBD9CA;
+    font-family: 'Bookman Old Style';
+    font-weight:bold;
+}
+
+#inventoryReportPrintBtn {
+    color: #004803;
+    border-color: #004803;
+    background-color: #DBD9CA;
+    font-family: 'Bookman Old Style';
+    font-weight:bold;
+}
+
+/* Inventory Report Button Stylings
+------------------------------------*/
+#changHistoryReportSearchBtn {
+    color: #004803;
+    border-color: #004803;
+    background-color: #DBD9CA;
+    font-family: 'Bookman Old Style';
+    font-weight: bold;
+}
+
+#changeHistoryReportPrintBtn {
+    color: #004803;
+    border-color: #004803;
+    background-color: #DBD9CA;
+    font-family: 'Bookman Old Style';
+    font-weight: bold;
+}

@@ -10,14 +10,14 @@
 <div class="container-fluid my-4">
     <div class="text-center">
         <h1 class="text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
-        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:13em; padding-bottom:6em" />
+        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:13em; padding-bottom:1em" />
     </div>
 </div>
 
 
 <div class="container text-center">
-    <p style="color: #0429AC">Inventory List Report</p>
-    <select name="irGenre" id="irGenre" asp-for="@Model.Genre" style="background-color:#F5F5F5; text-align:center">
+    <p style="color: #0429AC; font-weight:bold; font-size:30px">Inventory List Report</p>
+    <select name="irGenre" id="irGenre" asp-for="@Model.Genre" style="background-color:#F5F5F5; text-align:center; height:1.6em">
         @*Place code to iterate through genre options here, and delete placeholder values below*@
         <option value="" disabled selected>Select Genre</option>
         <option value="adventure">Adventure</option>
@@ -29,7 +29,7 @@
     </select>
 
     <div class="dropdown">
-        <button onclick="dropdownState()" class="dropbtn">Select Author</button>
+        <button onclick="dropdownState()" class="dropbtn" style="height:1.6em">Select Author</button>
         <div id="authorDropdown" class="dropdown-content">
             <input type="text" placeholder="Search..." id="authorInput" onkeyup="filterFunction()" asp-for="@Model.AuthorLast" />
             @*Place code to iterate through author options here, and delete placeholder values below... Will need to update CSS and JS for element types*@
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <select name="irInStock" id="irInStock" asp-for="@Model.InStock" style="background-color:#F5F5F5; text-align:center">
+    <select name="irInStock" id="irInStock" asp-for="@Model.InStock" style="background-color:#F5F5F5; text-align:center; height:1.6em">
         <option value="" disabled selected>Select In Stock</option>
         <option value="all">All</option>
         <option value="in stock">In Stock</option>
@@ -48,7 +48,7 @@
     </select>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="inventoryReportSearchBtn" name="inventoryReportSearchBtn" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Search</i></button>
+        <button id="inventoryReportSearchBtn" name="inventoryReportSearchBtn">Search</button>
     </div>
 
     <table class="table-hover table-bordered align-items-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1">
@@ -76,7 +76,7 @@
     </table>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="inventoryReportPrintBtn" name="inventoryReportPrintBtn" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Print</i></button>
+        <button id="inventoryReportPrintBtn" name="inventoryReportPrintBtn">Print</button>
     </div>
 
 </div>

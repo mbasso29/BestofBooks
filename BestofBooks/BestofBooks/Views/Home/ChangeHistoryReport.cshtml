@@ -10,15 +10,15 @@
 <div class="container-fluid my-4">
     <div class="text-center">
         <h1 class="text-wrap" style="color: #0429AC">Welcome to Best of Books!</h1>
-        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:13em; padding-bottom:6em" />
+        <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:13em; padding-bottom:1em" />
     </div>
 </div>
 
 
 <div class="container text-center">
-    <p style="color: #0429AC">Change History Report</p>
+    <p style="color: #0429AC; font-weight:bold; font-size:30px">Change History Report</p>
 
-    <select name="chrUsername" id="chrUsername" asp-for="@Model.Username" style="background-color:#F5F5F5; text-align:center">
+    <select name="chrUsername" id="chrUsername" asp-for="@Model.Username" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         @*Place code to iterate through username options here, and delete placeholder values below*@
         <option value="" disabled selected>Select Username</option>
         <option value="user1">Book_Worm22</option>
@@ -29,9 +29,9 @@
         <option value="user6">calvin-hobbes</option>
     </select>
 
-    <select name="chUserLast" id="chUserLast" asp-for="@Model.Username" style="background-color:#F5F5F5; text-align:center">
+    <select name="chUserLast" id="chUserLast" asp-for="@Model.Username" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         @*Place code to iterate through username options here, and delete placeholder values below*@
-        <option value="" disabled selected>Select Username</option>
+        <option value="" disabled selected>Select Last Name</option>
         <option value="user1">Basso</option>
         <option value="user2">Steinbeck</option>
         <option value="user3">Woolf</option>
@@ -41,18 +41,19 @@
     </select>
 
     <div class="dropdown">
-        <button onclick="dropdownStateCHI()" class="dropbtn">Select Date</button>
+        <button onclick="dropdownStateCHI()" class="dropbtn" style="height:1.7em">Select Date</button>
         <div id="dateRangeDropdown" class="dropdown-content">
             <label for="beginDate">Begin Date:</label>
             <input type="date" id="beginDate" name="beginDate" required>
             <label for="endDate">End Date:</label>
             <input type="date" id="endDate" name="endDate" required>
-
+            <br />
+            <button class="datergOKBtn" style="margin:.5em">OK</button>
         </div>
     </div>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="inventoryReportSearchBtn" name="inventoryReportSearchBtn" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Search</i></button>
+        <button id="changHistoryReportSearchBtn" name="inventoryReportSearchBtn">Search</button>
     </div>
 
     <table class="table-hover table-bordered align-items-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1">
@@ -72,11 +73,11 @@
     </table>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="inventoryReportPrintBtn" name="inventoryReportPrintBtn" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Print</i></button>
+        <button id="changeHistoryReportPrintBtn" name="inventoryReportPrintBtn">Print</button>
     </div>
 
 </div>
-</div>
+
 
 
 
