@@ -17,7 +17,8 @@
 
 <div class="container text-center">
     <p style="color: #0429AC">Inventory List Report</p>
-    <select name="genre" id="genre" asp-for="@Model.Genre" required style="background-color:#F5F5F5; text-align:center">
+    <select name="irGenre" id="irGenre" asp-for="@Model.Genre" style="background-color:#F5F5F5; text-align:center">
+        @*Place code to iterate through genre options here, and delete placeholder values below*@
         <option value="" disabled selected>Select Genre</option>
         <option value="adventure">Adventure</option>
         <option value="science fiction">Science Fiction</option>
@@ -27,18 +28,58 @@
         <option value="horror">Horror</option>
     </select>
 
-    <input type="text" name="authoer" id="author" asp-for="@Model.AuthorLast." placeholder="Select Author" required/>
+    <div class="dropdown">
+        <button onclick="dropdownState()" class="dropbtn">Select Author</button>
+        <div id="authorDropdown" class="dropdown-content">
+            <input type="text" placeholder="Search..." id="authorInput" onkeyup="filterFunction()" asp-for="@Model.AuthorLast" />
+            @*Place code to iterate through author options here, and delete placeholder values below... Will need to update CSS and JS for element types*@
+            <a href="#">Vonnegut, Kurt</a>
+            <a href="#">Kubo, Tite</a>
+            <a href="#">Shelley, Mary</a>
+            <a href="#">Austen, Jane</a>
+        </div>
+    </div>
 
-    <select name="inStock" id="inStock" asp-for="@Model.InStock" required style="background-color:#F5F5F5; text-align:center">
+    <select name="irInStock" id="irInStock" asp-for="@Model.InStock" style="background-color:#F5F5F5; text-align:center">
         <option value="" disabled selected>Select In Stock</option>
         <option value="all">All</option>
         <option value="in stock">In Stock</option>
         <option value="out stock">Out of Stock</option>
     </select>
 
+    <div class="container text-center" style="padding: 1em 0 1em 0">
+        <button id="inventoryReportSearchBtn" name="inventoryReportSearchBtn" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Search</i></button>
+    </div>
+
+    <table class="table-hover table-bordered align-items-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1">
+        <tr class="text-center">
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author First Name</th>
+            <th>Author Last Name</th>
+            <th>Genre</th>
+            <th>Location</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <!-- hidden row-->
+        <tr class="hidden text-center">
+            <td size="10"></td>
+            <td size="15"></td>
+            <td size="15"></td>
+            <td size="15"></td>
+            <td size="10"></td>
+            <td size="6"></td>
+            <td size="4"></td>
+            <td size="3"></td>
+        </tr>
+    </table>
+
+    <div class="container text-center" style="padding: 1em 0 1em 0">
+        <button id="inventoryReportPrintBtn" name="inventoryReportPrintBtn" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Print</i></button>
+    </div>
+
 </div>
-
-
 
 
 
