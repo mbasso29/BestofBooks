@@ -1,11 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Inventory Report";
 }
-@model BookModel
+@model AvailableReportModel
 
+<title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
 <script src="~/js/inventorylist-jquery.js"></script>
+<script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
     <div class="text-center">
@@ -17,30 +19,18 @@
 
 <div class="container text-center">
     <p style="color: #0429AC; font-weight:bold; font-size:30px">Inventory List Report</p>
-    <select name="irGenre" id="irGenre" asp-for="@Model.Genre" style="background-color:#F5F5F5; text-align:center; height:1.6em">
-        @*Place code to iterate through genre options here, and delete placeholder values below*@
+    <select name="irGenre" id="irGenre" asp-for="@Model.filters.Genre" asp-items="@Model.Genres" style="background-color:#F5F5F5; text-align:center; height:1.6em">
         <option value="" disabled selected>Select Genre</option>
-        <option value="adventure">Adventure</option>
-        <option value="science fiction">Science Fiction</option>
-        <option value="fantasy">Fantasy</option>
-        <option value="romance">Romance</option>
-        <option value="mystery">Mystery</option>
-        <option value="horror">Horror</option>
     </select>
 
     <div class="dropdown">
         <button onclick="dropdownState()" class="dropbtn" style="height:1.6em">Select Author</button>
         <div id="authorDropdown" class="dropdown-content">
-            <input type="text" placeholder="Search..." id="authorInput" onkeyup="filterFunction()" asp-for="@Model.AuthorLast" />
-            @*Place code to iterate through author options here, and delete placeholder values below... Will need to update CSS and JS for element types*@
-            <a href="#">Vonnegut, Kurt</a>
-            <a href="#">Kubo, Tite</a>
-            <a href="#">Shelley, Mary</a>
-            <a href="#">Austen, Jane</a>
+            <input type="text" placeholder="Search..." id="authorInput" onkeyup="filterFunction()" asp-for="@Model.filters.AuthorFullName" />
         </div>
     </div>
 
-    <select name="irInStock" id="irInStock" asp-for="@Model.InStock" style="background-color:#F5F5F5; text-align:center; height:1.6em">
+    <select name="irInStock" id="irInStock" asp-for="@Model.filters.InStock" style="background-color:#F5F5F5; text-align:center; height:1.6em">
         <option value="" disabled selected>Select In Stock</option>
         <option value="all">All</option>
         <option value="in stock">In Stock</option>
@@ -62,17 +52,21 @@
             <th>Price</th>
             <th>Quantity</th>
         </tr>
-        <!-- hidden row-->
-        <tr class="hidden text-center">
-            <td size="10"></td>
-            <td size="15"></td>
-            <td size="15"></td>
-            <td size="15"></td>
-            <td size="10"></td>
-            <td size="6"></td>
-            <td size="4"></td>
-            <td size="3"></td>
-        </tr>
+        @for (var i = 0; i < Model.Books.Count(); i++)
+                {
+                    <tr>
+                        <td>@Model.Books[i].ISBN</td>
+                        <td>@Model.Books[i].Title</td>
+                        <td>@Model.Books[i].AuthorFirst</td>
+                        <td>@Model.Books[i].AuthorLast</td>
+                        <td>@Model.Books[i].Genre</td>
+                        <td>@Model.Books[i].Location</td>
+                        <td>@Model.Books[i].Price.ToString("C")</td>
+                        <td>@Model.Books[i].Quantity</td>
+                        <td>@Model.Books[i].InStock</td>
+                        <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
+                    </tr>
+                }
     </table>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
@@ -80,10 +74,6 @@
     </div>
 
 </div>
-
-
-
-
 
     @section Scripts
 {

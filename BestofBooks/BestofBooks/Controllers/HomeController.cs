@@ -59,9 +59,13 @@ namespace BestofBooks.Controllers
             return View();
         }
 
-        public IActionResult AvailableInventoryListReport()
+        public async Task<IActionResult> AvailableInventoryListReport()
         {
-            return View();
+            var model = new AvailableReportModel();
+            model.Authors = await _bookRepo.getAuthors();
+            model.Genres = await _bookRepo.getGenres();
+            model.Books = new List<BookModel>();
+            return View(model);
         }
 
         public IActionResult ChangeHistoryReport()
