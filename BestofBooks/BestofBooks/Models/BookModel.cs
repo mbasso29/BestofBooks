@@ -12,6 +12,8 @@ namespace BestofBooks.Models
 		public string ISBN { get; set; }
 		public string Location { get; set; }
 		public decimal Price { get; set; }
+		public int Quantity { get; set; }
+		public string AuthorFullName { get { return AuthorLast + ", " + AuthorFirst; } }
 	}
 }
 
