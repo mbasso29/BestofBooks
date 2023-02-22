@@ -6,6 +6,6 @@ namespace BestofBooks.Repo
 {
     public interface IBookRepo
     {
-        Task<List<BookModel>> GetAllBooks();
+        Task<List<BookModel>> GetInventoryList();
     }
 }

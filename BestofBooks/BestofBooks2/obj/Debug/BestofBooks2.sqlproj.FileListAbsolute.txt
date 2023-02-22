@@ -1,6 +1,0 @@
-C:\Users\derek\OneDrive\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks2\bin\Debug\BestofBooks2.dacpac
-C:\Users\derek\OneDrive\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks2\bin\Debug\BestofBooks2.dll
-C:\Users\derek\OneDrive\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks2\bin\Debug\BestofBooks2.pdb
-C:\Users\derek\OneDrive\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks2\obj\Debug\BestofBooks2.sqlproj.AssemblyReference.cache
-C:\Users\derek\OneDrive\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks2\obj\Debug\BestofBooks2.dll
-C:\Users\derek\OneDrive\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks2\obj\Debug\BestofBooks2.pdb

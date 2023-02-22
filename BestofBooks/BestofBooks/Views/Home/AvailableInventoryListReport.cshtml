@@ -87,6 +87,6 @@
 
     @section Scripts
 {
-        @await Html.PartialAsync("_ValidationScriptsPartial")
-        @await Html.PartialAsync("Login")
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    @await Html.PartialAsync("Login", model: new UserModel())
+}
