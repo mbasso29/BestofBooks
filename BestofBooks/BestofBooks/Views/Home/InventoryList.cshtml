@@ -19,6 +19,9 @@
     </div>
 </div>
 
+<div class="container text-center" style="padding: 1em 0 1em 0">
+    <button id="addBtn" name="Add" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
+</div>
 <div class="container text-center">
     <table class="table-hover table-bordered align-items-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1">
         <tr class="text-center">
@@ -43,27 +46,7 @@
             <td contenteditable="true" id="location"><input id="input-style" type="text" size="3" placeholder="0" /></td>
             <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
         </tr>
-    </table>
-    <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="addBtn" name="Add" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
-    </div>
-
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ISBN</th>
-                    <th>Title</th>
-                    <th>Author First Name</th>
-                    <th>Author Last Name</th>
-                    <th>Genre</th>
-                    <th>Location</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (var i = 0; i < Model.Count(); i++)
+        @for (var i = 0; i < Model.Count(); i++)
                 {
                     var indexOffset = i + 1;
 
@@ -79,14 +62,11 @@
                         <td>@Model[i].InStock</td>
                     </tr>
                 }
-            </tbody>
-        </table>
-    </div>
-
+    </table>
 </div>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 @section Scripts
     {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-    @await Html.PartialAsync("Login")
+    @await Html.PartialAsync("Login", model: new UserModel())
 }

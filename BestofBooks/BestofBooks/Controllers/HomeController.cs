@@ -24,8 +24,7 @@ namespace BestofBooks.Controllers
 
         public async Task<IActionResult> InventoryList()
         {
-            List<BookModel> books = await _bookRepo.GetAllBooks();
-            Console.WriteLine("test");
+            List<BookModel> books = await _bookRepo.GetInventoryList();
             return View(books);
         }
 
