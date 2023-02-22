@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Inventory";
 }
+@model List<BookModel>
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,10 +47,46 @@
     <div class="container text-center" style="padding: 1em 0 1em 0">
         <button id="addBtn" name="Add" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
     </div>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Author First Name</th>
+                    <th>Author Last Name</th>
+                    <th>Genre</th>
+                    <th>Location</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count(); i++)
+                {
+                    var indexOffset = i + 1;
+
+                    <tr>
+                        <th>@indexOffset</th>
+                        <td>@Model[i].ISBN</td>
+                        <td>@Model[i].Title</td>
+                        <td>@Model[i].AuthorFirst</td>
+                        <td>@Model[i].AuthorLast</td>
+                        <td>@Model[i].Genre</td>
+                        <td>@Model[i].Location</td>
+                        <td>@Model[i].Price</td>
+                        <td>@Model[i].InStock</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
 </div>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 @section Scripts
-{
+    {
     @await Html.PartialAsync("_ValidationScriptsPartial")
     @await Html.PartialAsync("Login")
 }

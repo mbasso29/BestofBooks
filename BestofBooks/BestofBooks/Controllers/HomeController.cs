@@ -1,8 +1,10 @@
 ﻿using BestofBooks.Models;
+using BestofBooks.Repo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,15 +14,19 @@ namespace BestofBooks.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IBookRepo _bookRepo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IBookRepo bookRepo)
         {
             _logger = logger;
+            _bookRepo = bookRepo;
         }
 
-        public IActionResult InventoryList()
+        public async Task<IActionResult> InventoryList()
         {
-            return View();
+            List<BookModel> books = await _bookRepo.GetAllBooks();
+            Console.WriteLine("test");
+            return View(books);
         }
 
         public IActionResult Privacy()

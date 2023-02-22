@@ -3,7 +3,7 @@
 CREATE DATABASE BestofBooks;
 GO
 
-USE BestofBooks;
+USE BestofBooks2;
 GO
 
 CREATE  TABLE Book ( 
