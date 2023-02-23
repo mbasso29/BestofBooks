@@ -1,4 +1,4 @@
-USE BestofBooks2
+USE BestofBooks
 GO
 
 CREATE PROCEDURE GetAvailableInventory
