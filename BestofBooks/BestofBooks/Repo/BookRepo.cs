@@ -21,21 +21,17 @@ namespace BestofBooks.Repo
             _config = config;
         }
 
-        public async Task<List<BookModel>> GetAllBooks()
+        public async Task<List<BookModel>> GetInventoryList()
         {
-            string connString = _config.GetConnectionString("BestofBooks2");
+            string connString = _config.GetConnectionString("BestofBooks");
             using IDbConnection dbConnection = new SqlConnection(connString);
 
-            List<BookModel> books = (await dbConnection.QueryAsync<BookModel>("GetAllBooks", new { }, commandType: CommandType.StoredProcedure)).ToList();
+            List<BookModel> books = (await dbConnection.QueryAsync<BookModel>("GetInventoryList", new { }, commandType: CommandType.StoredProcedure)).ToList();
 
             return books;
         }
 
-<<<<<<< Updated upstream
-
-
-
-=======
+        //Updated upstream
         public async Task<List<SelectListItem>> getAuthors()
         {
             string connString = _config.GetConnectionString("BestofBooks");
@@ -77,7 +73,6 @@ namespace BestofBooks.Repo
                 })
                 .ToList();
         }
->>>>>>> Stashed changes
     }
 
 }
