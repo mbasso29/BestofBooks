@@ -15,11 +15,13 @@ namespace BestofBooks.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IBookRepo _bookRepo;
+        //private readonly IUserRepo _userRepo;
 
-        public HomeController(ILogger<HomeController> logger, IBookRepo bookRepo)
+        public HomeController(ILogger<HomeController> logger, IBookRepo bookRepo/*, IUserRepo userRepo*/)
         {
             _logger = logger;
             _bookRepo = bookRepo;
+            //_userRepo = userRepo;
         }
 
         public async Task<IActionResult> InventoryList()
@@ -33,9 +35,10 @@ namespace BestofBooks.Controllers
             return View();
         }
 
-        public IActionResult Search()
+        public async Task<IActionResult> Search()
         {
-            return View();
+            //List<BookModel> books = await _bookRepo.GetSearchList();
+            return View(/*books*/);
         }
 
         public IActionResult Reports()
@@ -53,10 +56,11 @@ namespace BestofBooks.Controllers
             return View();
         }
 
-        public IActionResult Admin()
+        /*public async Task<IActionResult> Admin()
         {
-            return View();
-        }
+            List<UserModel> users = await _userRepo.getUsers();
+            return View(users);
+        }*/
 
         public async Task<IActionResult> AvailableInventoryListReport()
         {

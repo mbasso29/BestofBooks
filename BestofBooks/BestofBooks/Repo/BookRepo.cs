@@ -31,7 +31,6 @@ namespace BestofBooks.Repo
             return books;
         }
 
-        //Updated upstream
         public async Task<List<SelectListItem>> getAuthors()
         {
             string connString = _config.GetConnectionString("BestofBooks");
@@ -73,6 +72,25 @@ namespace BestofBooks.Repo
                 })
                 .ToList();
         }
+
+        public async Task<List<BookModel>> GetAvailableInventoryList()
+        {
+            string connString = _config.GetConnectionString("BestofBooks");
+            using IDbConnection dbConnection = new SqlConnection(connString);
+
+            List<BookModel> books = (await dbConnection.QueryAsync<BookModel>("GetAvailableInventory", new { }, commandType: CommandType.StoredProcedure)).ToList();
+
+            return books;
+        }
+        //private async Task<List<SelectListItem>> GetSearchList()
+        //{
+        //    string connString = _config.GetConnectionString("BestofBooks");
+        //    using IDbConnection dbConnection = new SqlConnection(connString);
+
+        //    List<BookModel> books = (await dbConnection.QueryAsync<BookModel>("GetSearchList", new { }, commandType: CommandType.StoredProcedure)).ToList();
+
+        //    return books;
+        //}
     }
 
 }

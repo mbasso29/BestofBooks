@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model UserModel
+@model AdminModel
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -16,13 +16,13 @@
                         <label for="username" style="color:#0429AC">Username</label>
                     </div>
                     <div>
-                        <input type="text" id="username" name="username" asp-for="@Model.Username" required />
+                        <input type="text" id="username" name="username" asp-for="@Model.user.username" required />
                     </div>
                     <div>
                         <label for="password" style="color:#0429AC">Password</label>
                     </div>
                     <div>
-                        <input type="password" id="password" name="password" asp-for="@Model.Password" required />
+                        <input type="password" id="password" name="password" asp-for="@Model.user.password" required />
                     </div>
                 </form>
             </div>

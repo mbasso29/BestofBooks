@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Change History Report";
 }
-@model UserModel
+@model AdminModel
 
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
@@ -18,26 +18,14 @@
 <div class="container text-center">
     <p style="color: #0429AC; font-weight:bold; font-size:30px">Change History Report</p>
 
-    <select name="chrUsername" id="chrUsername" asp-for="@Model.Username" style="background-color:#F5F5F5; text-align:center; height:1.65em">
+    <select name="chrUsername" id="chrUsername" asp-for="@Model.user.username" asp-items="@Model.Users" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         @*Place code to iterate through username options here, and delete placeholder values below*@
         <option value="" disabled selected>Select Username</option>
-        <option value="user1">Book_Worm22</option>
-        <option value="user2">mangaAddict</option>
-        <option value="user3">hcaulfield</option>
-        <option value="user4">eDgYb0i</option>
-        <option value="user5">dr-who</option>
-        <option value="user6">calvin-hobbes</option>
     </select>
 
-    <select name="chUserLast" id="chUserLast" asp-for="@Model.Username" style="background-color:#F5F5F5; text-align:center; height:1.65em">
+    <select name="chUserLast" id="chUserLast" asp-for="@Model.user.user_last" asp-items="@Model.Users" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         @*Place code to iterate through username options here, and delete placeholder values below*@
         <option value="" disabled selected>Select Last Name</option>
-        <option value="user1">Basso</option>
-        <option value="user2">Steinbeck</option>
-        <option value="user3">Woolf</option>
-        <option value="user4">Lewis</option>
-        <option value="user5">Plath</option>
-        <option value="user6">Salinger</option>
     </select>
 
     <div class="dropdown">
@@ -88,5 +76,5 @@
 @section Scripts
 {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-    @await Html.PartialAsync("Login", model: new UserModel())
+    @await Html.PartialAsync("Login", model: new AdminModel())
 }

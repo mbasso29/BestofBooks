@@ -76,3 +76,22 @@ function filterFunction() {
 function dropdownStateCHI() {
     document.getElementById("dateRangeDropdown").classList.toggle("show");
 }
+
+/* Add event listener to Search buttons */
+document.getElementById("inventorySearchBtn").addEventListener("click", function () {
+    showTable("inventoryListTable");
+    showBtn("inventoryReportPrintBtn")
+})
+
+function showTable(table) {
+    document.getElementById(table).style.visibility = "visible";
+}
+
+function showBtn(button) {
+    document.getElementById(button).style.visibility = "visible";
+}
+
+/* Add clear function to Clear button */
+
+
+/* Set qty to 0 when Trash Can is clicked */
