@@ -80,7 +80,7 @@ VALUES
 
 INSERT INTO dbo.BoBUser
 VALUES
-(1,'Employee','Boss','boss.employee@bestofbooks.com','bemployee',1,1);
+(1,'Employee','Boss','boss.employee@bestofbooks.com','bemployee','p@sSw0rd','employee',1,1,1,1,0);
 
 INSERT INTO dbo.Admin
 VALUES

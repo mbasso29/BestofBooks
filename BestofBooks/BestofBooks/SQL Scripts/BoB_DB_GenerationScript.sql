@@ -41,8 +41,13 @@ CREATE  TABLE [BoBUser] (
 	user_first           varchar(50)      NOT NULL,
 	user_email           varchar(50)      NOT NULL,
 	username             varchar(100)      NOT NULL,
-	is_employee          bit  DEFAULT 0    NOT NULL,
+	password			 varchar(50)	   NOT NULL,
+	user_type            varchar(50)       NOT NULL,
+	adds_enabled		 bit  DEFAULT 0	   NOT NULL,
+	edits_enabled		 bit  DEFAULT 0    NOT NULL,
+	deletes_enabled		 bit  DEFAULT 0	   NOT NULL,
 	is_admin             bit  DEFAULT 0    NOT NULL,
+	is_ViewOnly			 bit  DEFAULT 1	   NOT NULL,
 	CONSTRAINT pk_user PRIMARY KEY  ( BoBuser_id ) 
  );
 GO

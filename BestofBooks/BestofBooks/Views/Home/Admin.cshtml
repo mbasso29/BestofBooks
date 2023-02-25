@@ -29,13 +29,14 @@
         </tr>
         <!-- hidden row-->
         <tr class="hidden text-center">
-            <td> @Html.DisplayFor(model => model.FirstName)</td>
-            <td> @Html.DisplayFor(model => model.LastName)</td>
-            <td> @Html.CheckBoxFor(model => model.IsViewOnly)</td>
-            <td> @Html.CheckBoxFor(model => model.AddsEnabled)</td>
-            <td> @Html.CheckBoxFor(model => model.EditsEnabled)</td>
-            <td> @Html.CheckBoxFor(model => model.DeletesEnabled)</td>
-            <td> @Html.CheckBoxFor(model => model.IsAdmin)</td>
+            <td> @Html.DisplayFor(model => model.user_first)</td>
+            <td> @Html.DisplayFor(model => model.user_last)</td>
+            <td> @Html.DisplayFor(model => model.user_type)</td>
+            <td> @Html.CheckBoxFor(model => model.is_ViewOnly)</td>
+            <td> @Html.CheckBoxFor(model => model.adds_enabled)</td>
+            <td> @Html.CheckBoxFor(model => model.edits_enabled)</td>
+            <td> @Html.CheckBoxFor(model => model.deletes_enabled)</td>
+            <td> @Html.CheckBoxFor(model => model.is_Admin)</td>
         </tr>
     </table>
 </div>
@@ -46,5 +47,5 @@
 @section Scripts
     {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-    @await Html.PartialAsync("Login", model: new UserModel())
+    @await Html.PartialAsync("Login", model: new AdminModel())
 }

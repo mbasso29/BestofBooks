@@ -16,9 +16,8 @@
     </div>
 </div>
 
-
 <div class="container text-center">
-    <p style="color: #0429AC; font-weight:bold; font-size:30px">Inventory List Report</p>
+    <p style="color: #0429AC; font-weight:bold; font-size:30px">Available Inventory List Report</p>
     <select name="irGenre" id="irGenre" asp-for="@Model.filters.Genre" asp-items="@Model.Genres" style="background-color:#F5F5F5; text-align:center; height:1.6em">
         <option value="" disabled selected>Select Genre</option>
     </select>
@@ -38,10 +37,10 @@
     </select>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="inventoryReportSearchBtn" name="inventoryReportSearchBtn">Search</button>
+        <button id="inventorySearchBtn" name="inventoryReportSearchBtn">Search</button>
     </div>
 
-    <table class="table-hover table-bordered align-items-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1">
+    <table class="table-hover table-bordered align-items-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1" style="visibility:hidden">
         <tr class="text-center">
             <th>ISBN</th>
             <th>Title</th>
@@ -64,13 +63,12 @@
                         <td>@Model.Books[i].Price.ToString("C")</td>
                         <td>@Model.Books[i].Quantity</td>
                         <td>@Model.Books[i].InStock</td>
-                        <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
                     </tr>
                 }
     </table>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="inventoryReportPrintBtn" name="inventoryReportPrintBtn">Print</button>
+        <button id="inventoryReportPrintBtn" name="inventoryReportPrintBtn" style="visibility:hidden">Print</button>
     </div>
 
 </div>
@@ -78,5 +76,5 @@
     @section Scripts
 {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-    @await Html.PartialAsync("Login", model: new UserModel())
+    @await Html.PartialAsync("Login", model: new AdminModel())
 }
