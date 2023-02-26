@@ -1,6 +1,23 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+/* Privacy policy stylings */
+p {
+    color: #0429AC;
+}
+
+h1 {
+    color: #004803;
+}
+
+h2 {
+    color: #004803;
+}
+
+h3 {
+    color: #004803;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -161,10 +178,6 @@ body {
 #input-style {
     background-color: #F5F5F5;
     align-content: center;
-}
-
-p {
-    color: blueviolet;
 }
 
 /* Report Dropdown Button Styles
