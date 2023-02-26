@@ -163,15 +163,6 @@ body {
     align-content: center;
 }
 
-/* Inventory Table Styles 
--------------------------------------------------- */
-#inventoryListTable {
-    background-color: #DBD9CA;
-    color: #0429AC;
-    text-align: center;
-    display: inline-block;
-}
-
 p {
     color: blueviolet;
 }
@@ -252,27 +243,9 @@ p {
     display: block;
 }
 
-/* Change History Report Button Stylings
+/* Report Button Stylings
 ------------------------------------*/
-#inventoryReportSearchBtn {
-    color: #004803;
-    border-color: #004803;
-    background-color: #DBD9CA;
-    font-family: 'Bookman Old Style';
-    font-weight:bold;
-}
-
-#inventoryReportPrintBtn {
-    color: #004803;
-    border-color: #004803;
-    background-color: #DBD9CA;
-    font-family: 'Bookman Old Style';
-    font-weight:bold;
-}
-
-/* Inventory Report Button Stylings
-------------------------------------*/
-#changHistoryReportSearchBtn {
+#SearchBtn {
     color: #004803;
     border-color: #004803;
     background-color: #DBD9CA;
@@ -280,10 +253,20 @@ p {
     font-weight: bold;
 }
 
-#changeHistoryReportPrintBtn {
+#PrintBtn {
     color: #004803;
     border-color: #004803;
     background-color: #DBD9CA;
     font-family: 'Bookman Old Style';
     font-weight: bold;
+    visibility: hidden
+}
+
+/* Table Stylings */
+#ListTable {
+    background-color: #DBD9CA;
+    color: #0429AC;
+    text-align: center;
+    display: inline-block;
+    visibility: hidden;
 }

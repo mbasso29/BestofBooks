@@ -77,10 +77,10 @@ function dropdownStateCHI() {
     document.getElementById("dateRangeDropdown").classList.toggle("show");
 }
 
-/* Add event listener to Search buttons */
-document.getElementById("inventorySearchBtn").addEventListener("click", function () {
-    showTable("inventoryListTable");
-    showBtn("inventoryReportPrintBtn")
+/* Add event listener to Inventory Search buttons */
+document.getElementById("SearchBtn").addEventListener("click", function () {
+    showTable("ListTable");
+    showBtn("PrintBtn")
 })
 
 function showTable(table) {
