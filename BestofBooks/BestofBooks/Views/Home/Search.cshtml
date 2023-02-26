@@ -1,12 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Search";
 }
-@model AvailableReportModel
+@model List<BookModel>
 
 <title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
 <script src="~/js/inventorylist-jquery.js"></script>
+<script src="~/js/site.js"></script>
 <script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
@@ -30,11 +31,11 @@
     </div>
 </div>
 <div class="container text-center">
-    <button id="inventorySearchBtn" name="Search" style="color:#004803; border-color:#004803; background-color:#DBD9CA; font-weight:bold">Search</button>
+    <button id="SearchBtn" name="Search" style="color:#004803; border-color:#004803; background-color:#DBD9CA; font-weight:bold">Search</button>
     <button id="clearBtn" name="Clear" style="color:#004803; border-color:#004803; background-color:#DBD9CA; font-weight:bold">Clear</button>
 </div>
 <div class="container text-center" style="padding: .5em 0 .5em 0">
-     <table class="table-hover table-bordered align-items-center text-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1" style="visibility:hidden">
+     <table class="table-hover table-bordered align-items-center text-center" id="ListTable" cellspacing=5 cellpadding=5 border="1" style="visibility:hidden">
         <tr class="text-center">
             <th>ISBN</th>
             <th>Title</th>
@@ -45,20 +46,20 @@
             <th>Price</th>
             <th>Quantity</th>
         </tr>
-@*        @for (var i = 0; i < Model.Books.Count(); i++)
+        @for (var i = 0; i < Model.Count(); i++)
                 {
                     <tr>
-                        <td>@Model.Books[i].ISBN</td>
-                        <td>@Model.Books[i].Title</td>
-                        <td>@Model.Books[i].AuthorFirst</td>
-                        <td>@Model.Books[i].AuthorLast</td>
-                        <td>@Model.Books[i].Genre</td>
-                        <td>@Model.Books[i].Location</td>
-                        <td>@Model.Books[i].Price.ToString("C")</td>
-                        <td>@Model.Books[i].Quantity</td>
-                        <td>@Model.Books[i].InStock</td>
+                        <td>@Model[i].ISBN</td>
+                        <td>@Model[i].Title</td>
+                        <td>@Model[i].AuthorFirst</td>
+                        <td>@Model[i].AuthorLast</td>
+                        <td>@Model[i].Genre</td>
+                        <td>@Model[i].Location</td>
+                        <td>@Model[i].Price.ToString("C")</td>
+                        <td>@Model[i].Quantity</td>
+                        <td>@Model[i].InStock</td>
                     </tr>
-                }*@
+                }
     </table>
 </div>
 
