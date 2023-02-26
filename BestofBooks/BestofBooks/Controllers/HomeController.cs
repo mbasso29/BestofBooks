@@ -56,11 +56,11 @@ namespace BestofBooks.Controllers
             return View();
         }
 
-        /*public async Task<IActionResult> Admin()
+        public async Task<IActionResult> Admin()
         {
-            List<UserModel> users = await _userRepo.getUsers();
-            return View(users);
-        }*/
+            //List<UserModel> users = await _userRepo.getUsers();
+            return View(/*users*/);
+        }
 
         public async Task<IActionResult> AvailableInventoryListReport()
         {
@@ -71,7 +71,7 @@ namespace BestofBooks.Controllers
             return View(model);
         }
 
-        public IActionResult ChangeHistoryReport()
+        public async Task<IActionResult> ChangeHistoryReport()
         {
             return View();
         }
