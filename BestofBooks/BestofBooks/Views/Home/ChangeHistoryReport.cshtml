@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Change History Report";
 }
-@model AdminModel
+@model UserModel
 
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
@@ -18,12 +18,12 @@
 <div class="container text-center">
     <p style="color: #0429AC; font-weight:bold; font-size:30px">Change History Report</p>
 
-    <select name="chrUsername" id="chrUsername" asp-for="@Model.user.username" asp-items="@Model.Users" style="background-color:#F5F5F5; text-align:center; height:1.65em">
+    <select name="chrUsername" id="chrUsername" asp-for="@Model.username" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         @*Place code to iterate through username options here, and delete placeholder values below*@
         <option value="" disabled selected>Select Username</option>
     </select>
 
-    <select name="chUserLast" id="chUserLast" asp-for="@Model.user.user_last" asp-items="@Model.Users" style="background-color:#F5F5F5; text-align:center; height:1.65em">
+    <select name="chUserLast" id="chUserLast" asp-for="@Model.user_last" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         @*Place code to iterate through username options here, and delete placeholder values below*@
         <option value="" disabled selected>Select Last Name</option>
     </select>
@@ -46,10 +46,10 @@
 
     <table class="table-hover table-bordered align-items-center" id="inventoryListTable" cellspacing=5 cellpadding=5 border="1">
         <tr class="text-center">
+            <th>Table Name</th>
+            <th>Change Action</th>
             <th>Username</th>
-            <th>Last Name</th>
-            <th>Date Range</th>
-            <th>Change Made</th>
+            <th>Date</th>
         </tr>
         <!-- hidden row-->
         <tr class="hidden text-center">
