@@ -11,6 +11,6 @@ namespace BestofBooks.Repo
         Task<List<BookModel>> GetAvailableInventoryList();
         Task<List<SelectListItem>> getGenres();
         Task<List<BookModel>> GetInventoryList();
-        //Task<List<BookModel>> GetSearchList();
+        Task<List<BookModel>> GetSearchList();
     }
 }

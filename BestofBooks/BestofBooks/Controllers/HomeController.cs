@@ -37,8 +37,8 @@ namespace BestofBooks.Controllers
 
         public async Task<IActionResult> Search()
         {
-            //List<BookModel> books = await _bookRepo.GetSearchList();
-            return View(/*books*/);
+            List<BookModel> books = await _bookRepo.GetSearchList();
+            return View(books);
         }
 
         public IActionResult Reports()

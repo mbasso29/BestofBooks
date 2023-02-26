@@ -82,15 +82,16 @@ namespace BestofBooks.Repo
 
             return books;
         }
-        //private async Task<List<SelectListItem>> GetSearchList()
-        //{
-        //    string connString = _config.GetConnectionString("BestofBooks");
-        //    using IDbConnection dbConnection = new SqlConnection(connString);
 
-        //    List<BookModel> books = (await dbConnection.QueryAsync<BookModel>("GetSearchList", new { }, commandType: CommandType.StoredProcedure)).ToList();
+        public async Task<List<BookModel>> GetSearchList()
+        {
+            string connString = _config.GetConnectionString("BestofBooks");
+            using IDbConnection dbConnection = new SqlConnection(connString);
 
-        //    return books;
-        //}
+            List<BookModel> books = (await dbConnection.QueryAsync<BookModel>("BookSearch", new { }, commandType: CommandType.StoredProcedure)).ToList();
+
+            return books;
+        }
     }
 
 }
