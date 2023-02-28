@@ -15,13 +15,13 @@ namespace BestofBooks.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IBookRepo _bookRepo;
-        //private readonly IUserRepo _userRepo;
+        private readonly IUserRepo _userRepo;
 
-        public HomeController(ILogger<HomeController> logger, IBookRepo bookRepo/*, IUserRepo userRepo*/)
+        public HomeController(ILogger<HomeController> logger, IBookRepo bookRepo, IUserRepo userRepo)
         {
             _logger = logger;
             _bookRepo = bookRepo;
-            //_userRepo = userRepo;
+            _userRepo = userRepo;
         }
 
         public async Task<IActionResult> InventoryList()
@@ -51,6 +51,15 @@ namespace BestofBooks.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateAccount(UserModel model)
+        {
+            model.password = SecurityUtilities.HashPassword(model.password);
+            _userRepo.createUser(model);
+            return View();
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -58,8 +67,8 @@ namespace BestofBooks.Controllers
 
         public async Task<IActionResult> Admin()
         {
-            //List<UserModel> users = await _userRepo.getUsers();
-            return View(/*users*/);
+            List<UserModel> users = await _userRepo.getUsers();
+            return View(users);
         }
 
         public async Task<IActionResult> AvailableInventoryListReport()
@@ -73,6 +82,7 @@ namespace BestofBooks.Controllers
 
         public async Task<IActionResult> ChangeHistoryReport()
         {
+            //List<UserModel> users = await _userRepo.getChangeHistory();
             return View();
         }
 

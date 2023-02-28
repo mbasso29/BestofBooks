@@ -125,7 +125,7 @@ body {
         margin-bottom: 25px;
     }
 
-    #createAccountForm button {
+    #createAccountBtn {
         padding: 10px 20px;
         background-color: #DBD9CA;
         color: #004803;

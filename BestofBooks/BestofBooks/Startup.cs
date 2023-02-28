@@ -26,6 +26,7 @@ namespace BestofBooks
         {
             services.AddControllersWithViews();
             services.AddTransient<IBookRepo, BookRepo>();
+            services.AddTransient<IUserRepo, UserRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
