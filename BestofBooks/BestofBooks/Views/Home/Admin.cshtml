@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Admin";
 }
-@model UserModel
+@model List<UserModel>
 
 <title>@ViewData["Title"]</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -28,17 +28,20 @@
             <th>Enable Deletes</th>
             <th>Allow Admin</th>
         </tr>
-        <!-- hidden row-->
+        
+        @for (var i = 0; i < Model.Count(); i++)
+        {
         <tr class="hidden text-center">
-            <td> @Html.DisplayFor(model => model.user_first)</td>
-            <td> @Html.DisplayFor(model => model.user_last)</td>
-            <td> @Html.DisplayFor(model => model.user_type)</td>
-            <td> @Html.CheckBoxFor(model => model.is_ViewOnly)</td>
-            <td> @Html.CheckBoxFor(model => model.adds_enabled)</td>
-            <td> @Html.CheckBoxFor(model => model.edits_enabled)</td>
-            <td> @Html.CheckBoxFor(model => model.deletes_enabled)</td>
-            <td> @Html.CheckBoxFor(model => model.is_Admin)</td>
+            <td> @Html.DisplayFor(model => model[i].user_first)</td>
+            <td> @Html.DisplayFor(model => model[i].user_last)</td>
+            <td> @Html.DisplayFor(model => model[i].user_type)</td>
+            <td> @Html.CheckBoxFor(model => model[i].is_ViewOnly)</td>
+            <td> @Html.CheckBoxFor(model => model[i].adds_enabled)</td>
+            <td> @Html.CheckBoxFor(model => model[i].edits_enabled)</td>
+            <td> @Html.CheckBoxFor(model => model[i].deletes_enabled)</td>
+            <td> @Html.CheckBoxFor(model => model[i].is_Admin)</td>
         </tr>
+        }
     </table>
 </div>
 

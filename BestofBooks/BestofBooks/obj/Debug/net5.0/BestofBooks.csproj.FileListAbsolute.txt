@@ -310,3 +310,7 @@ C:\Users\derek\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks\obj\Debug\ne
 C:\Users\derek\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks\obj\Debug\net5.0\BestofBooks.pdb
 C:\Users\derek\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks\obj\Debug\net5.0\BestofBooks.genruntimeconfig.cache
 C:\Users\derek\Documents\GitHub\BestofBooks\BestofBooks\BestofBooks\obj\Debug\net5.0\ref\BestofBooks.dll
+C:\GitHub\BestofBooks\BestofBooks\BestofBooks\bin\Debug\net5.0\BCrypt.Net-Next.dll
+C:\GitHub\BestofBooks\BestofBooks\BestofBooks\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\GitHub\BestofBooks\BestofBooks\BestofBooks\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\GitHub\BestofBooks\BestofBooks\BestofBooks\bin\Debug\net5.0\ScottBrady91.AspNetCore.Identity.BCryptPasswordHasher.dll

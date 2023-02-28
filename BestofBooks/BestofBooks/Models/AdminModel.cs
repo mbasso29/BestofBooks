@@ -7,5 +7,6 @@ namespace BestofBooks.Models
     {
         public List<SelectListItem> Users { get; set; }
         public UserModel user { get; set; }
+        public UserModel newUser { get; set; }
     }
 }
