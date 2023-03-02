@@ -81,7 +81,7 @@ function dropdownStateCHI() {
 /* Add event listener to Inventory Search buttons */
 document.getElementById("SearchBtn").addEventListener("click", function () {
     showTable("ListTable");
-    showBtn("PrintBtn")
+    showBtn("PrintBtn");
 })
 
 function showTable(table) {
@@ -92,8 +92,21 @@ function showBtn(button) {
     document.getElementById(button).style.visibility = "visible";
 }
 
-/* Add clear function to Clear button */
 
+/* Add clear function to Clear button */
+document.getElementById("ClearBtn").addEventListener("click", function () {
+    clearInput("textFilter");
+    resetSelect("searchOptions");
+
+})
+
+function clearInput(input) {
+    document.getElementById(input).value = "";
+}
+
+function resetSelect(selectElement) {
+    document.getElementById(selectElement).selectedIndex = 0;
+}
 
 /* Set qty to 0 when Trash Can is clicked */
 
