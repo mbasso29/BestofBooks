@@ -42,35 +42,39 @@
         <button id="SearchBtn" name="inventoryReportSearchBtn">Search</button>
     </div>
 
-    <table class="table-hover table-bordered align-items-center" id="ListTable" cellspacing=5 cellpadding=5 border="1">
-        <tr class="text-center">
-            <th>ISBN</th>
-            <th>Title</th>
-            <th>Author First Name</th>
-            <th>Author Last Name</th>
-            <th>Genre</th>
-            <th>Location</th>
-            <th>Price</th>
-            <th>Quantity</th>
-        </tr>
-        @for (var i = 0; i < Model.Books.Count(); i++)
-                {
-                    <tr>
-                        <td>@Model.Books[i].ISBN</td>
-                        <td>@Model.Books[i].Title</td>
-                        <td>@Model.Books[i].AuthorFirst</td>
-                        <td>@Model.Books[i].AuthorLast</td>
-                        <td>@Model.Books[i].Genre</td>
-                        <td>@Model.Books[i].Location</td>
-                        <td>@Model.Books[i].Price.ToString("C")</td>
-                        <td>@Model.Books[i].Quantity</td>
-                        <td>@Model.Books[i].InStock</td>
-                    </tr>
-                }
-    </table>
+    <form id="availableInventoryForm" runat="server">
+        <asp:Panel id="InventoryPanel">
+            <table class="table-hover table-bordered align-items-center" id="ListTable" cellspacing=5 cellpadding=5 border="1">
+                <tr class="text-center">
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Author First Name</th>
+                    <th>Author Last Name</th>
+                    <th>Genre</th>
+                    <th>Location</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                @for (var i = 0; i < Model.Books.Count(); i++)
+                        {
+                            <tr>
+                                <td>@Model.Books[i].ISBN</td>
+                                <td>@Model.Books[i].Title</td>
+                                <td>@Model.Books[i].AuthorFirst</td>
+                                <td>@Model.Books[i].AuthorLast</td>
+                                <td>@Model.Books[i].Genre</td>
+                                <td>@Model.Books[i].Location</td>
+                                <td>@Model.Books[i].Price.ToString("C")</td>
+                                <td>@Model.Books[i].Quantity</td>
+                                <td>@Model.Books[i].InStock</td>
+                            </tr>
+                        }
+            </table>
+        </asp:Panel>
+    </form>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="PrintBtn" name="inventoryReportPrintBtn">Print</button>
+        <button id="PrintBtn" name="inventoryReportPrintBtn" runat="server">Print</button>
     </div>
 
 </div>
@@ -80,3 +84,5 @@
     @await Html.PartialAsync("_ValidationScriptsPartial")
     @await Html.PartialAsync("Login", model: new AdminModel())
 }
+
+
