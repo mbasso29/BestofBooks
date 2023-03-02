@@ -3,7 +3,7 @@
 
 // Write your JavaScript code.
 
-//Used to set background color of current page through aria controls
+//Used to set background color of current page navigation tab through aria controls
 document.querySelectorAll('.navLink').forEach
     (link => {
         if (link.href === window.location.href) {
@@ -51,7 +51,7 @@ function applyDataMask(field) {
     field.addEventListener('keyup', changed)
 }
 
-/* Report Dropdown Button with Search- When the user clicks on the button,
+/* Report Dropdown Author Button with Search- When the user clicks on the button,
 toggle between hiding and showing the dropdown content, filter */
 function dropdownState() {
     document.getElementById("authorDropdown").classList.toggle("show");
@@ -73,6 +73,7 @@ function filterFunction() {
     }
 }
 
+/* Dropdown functionality for datepickers */
 function dropdownStateCHI() {
     document.getElementById("dateRangeDropdown").classList.toggle("show");
 }
@@ -95,3 +96,13 @@ function showBtn(button) {
 
 
 /* Set qty to 0 when Trash Can is clicked */
+
+
+/* Set Print Function */
+document.getElementById("PrintBtn").addEventListener("click", function () { 
+    return PrintPage()
+})
+
+function PrintPage() {
+    window.print()
+}
