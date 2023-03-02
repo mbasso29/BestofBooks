@@ -56,6 +56,7 @@ namespace BestofBooks.Controllers
         public IActionResult CreateAccount(UserModel model)
         {
             model.password = SecurityUtilities.HashPassword(model.password);
+            model.is_ViewOnly = true;
             _userRepo.createUser(model);
             return View();
         }
