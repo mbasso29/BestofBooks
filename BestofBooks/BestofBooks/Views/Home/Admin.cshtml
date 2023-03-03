@@ -6,7 +6,7 @@
 <title>@ViewData["Title"]</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
-<script src="~/js/inventorylist-jquery.js"></script>
+<script src="~/js/site.js"></script>
 <script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
@@ -35,11 +35,11 @@
             <td> @Html.DisplayFor(model => model[i].user_first)</td>
             <td> @Html.DisplayFor(model => model[i].user_last)</td>
             <td> @Html.DisplayFor(model => model[i].user_type)</td>
-            <td> @Html.CheckBoxFor(model => model[i].is_ViewOnly)</td>
-            <td> @Html.CheckBoxFor(model => model[i].adds_enabled)</td>
-            <td> @Html.CheckBoxFor(model => model[i].edits_enabled)</td>
-            <td> @Html.CheckBoxFor(model => model[i].deletes_enabled)</td>
-            <td> @Html.CheckBoxFor(model => model[i].is_Admin)</td>
+            <td> <input type="checkbox" onclick="toggleViewOnly(this, @Model[i].BoBuser_id)" @(Model[i].is_ViewOnly ?"checked":"")/></td>
+            <td> <input type="checkbox" onclick="toggleAddsEnabled(this, @Model[i].BoBuser_id)" @(Model[i].adds_enabled ?"checked":"") /></td>
+            <td> <input type="checkbox" onclick="toggleEditsEnabled(this, @Model[i].BoBuser_id)" @(Model[i].edits_enabled ?"checked":"") /></td>
+            <td> <input type="checkbox" onclick="toggleDeletesEnabled(this, @Model[i].BoBuser_id)" @(Model[i].deletes_enabled ?"checked":"") /></td>
+            <td> <input type="checkbox" onclick="toggleIsAdmin(this, @Model[i].BoBuser_id)" @(Model[i].is_Admin ?"checked":"") /></td>
         </tr>
         }
     </table>

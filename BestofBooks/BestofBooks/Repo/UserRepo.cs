@@ -36,7 +36,7 @@ namespace BestofBooks.Repo
             string connString = _config.GetConnectionString("BestofBooks");
             using IDbConnection dbConnection = new SqlConnection(connString);
 
-            List<UserModel> users = (await dbConnection.QueryAsync<UserModel>("GetChangeReport", new { }, commandType: CommandType.StoredProcedure)).ToList();
+            List<UserModel> users = (await dbConnection.QueryAsync<UserModel>("GetChangeReport", new { }, commandType: CommandType.StoredProcedure)).ToList(); //throwing error
 
             return users;
         }
@@ -50,6 +50,19 @@ namespace BestofBooks.Repo
             await dbConnection.ExecuteAsync("CreateNewUser", param: parameters, commandType: CommandType.StoredProcedure);
 
             return newUser;
+        }
+
+        public async Task updateUserRights(int BoBuser_id, string updateField, int newValue)
+        {
+            string connString = _config.GetConnectionString("BestofBooks");
+            using IDbConnection dbConnection = new SqlConnection(connString);
+
+            var parameters = new DynamicParameters();
+            parameters.Add("BoBuser_id", BoBuser_id);
+            parameters.Add(updateField, newValue);
+            await dbConnection.ExecuteAsync("UpdateRights", param: parameters, commandType: CommandType.StoredProcedure);
+
+            return;
         }
     }
 

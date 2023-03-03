@@ -10,5 +10,6 @@ namespace BestofBooks.Repo
         Task<UserModel> createUser(UserModel newUser);
         Task<List<UserModel>> getChangeHistory();
         Task<List<UserModel>> getUsers();
+        Task updateUserRights(int BoBuser_id, string updateField, int newValue);
     }
 }
