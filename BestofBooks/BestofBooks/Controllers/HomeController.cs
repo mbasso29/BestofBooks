@@ -1,5 +1,6 @@
 ﻿using BestofBooks.Models;
 using BestofBooks.Repo;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -26,7 +27,7 @@ namespace BestofBooks.Controllers
 
         public async Task<IActionResult> InventoryList()
         {
-            List<BookModel> books = await _bookRepo.GetInventoryList();
+            List<BookModel> books = await _bookRepo.GetInventoryList();  //change user rights for trashcan and editable content
             return View(books);
         }
 
@@ -37,7 +38,7 @@ namespace BestofBooks.Controllers
 
         public async Task<IActionResult> Search()
         {
-            List<BookModel> books = await _bookRepo.GetSearchList();
+            List<BookModel> books = await _bookRepo.GetSearchList();  // remove empty space when table isn't shown
             return View(books);
         }
 
@@ -61,11 +62,6 @@ namespace BestofBooks.Controllers
             return View();
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
         public async Task<IActionResult> Admin()
         {
             List<UserModel> users = await _userRepo.getUsers();
@@ -83,7 +79,7 @@ namespace BestofBooks.Controllers
 
         public async Task<IActionResult> ChangeHistoryReport()
         {
-            //List<UserModel> users = await _userRepo.getChangeHistory();
+            //List<UserModel> users = await _userRepo.getChangeHistory();    //throws error
             return View();
         }
 
@@ -92,5 +88,29 @@ namespace BestofBooks.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        private async Task<bool> loginUser(string userName, string password)
+        {
+            List<UserModel> users = await _userRepo.getUsers();
+            var user = users.FirstOrDefault(u => u.username.ToLower() == userName.ToLower());
+            if (user == null)
+            {
+                return false;
+            }
+            bool success = SecurityUtilities.userLoggedIn(user.password, password);
+            if (success)
+            {
+                this.HttpContext.Session.SetInt32("_loggedInUser",user.BoBuser_id);
+            }
+            else
+            {
+                this.HttpContext.Session.SetInt32("_loggedInUser", 0);
+            }
+            return success;
+        }
+
+        private bool isUserLoggedIn => this.HttpContext.Session.GetInt32("_loggedInUser") != 0;
+
+        private UserModel loggedInUser => _userRepo.getUsers().Result.FirstOrDefault(u => u.BoBuser_id == this.HttpContext.Session.GetInt32("_loggedInUser"));
     }
 }

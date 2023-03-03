@@ -119,3 +119,125 @@ document.getElementById("PrintBtn").addEventListener("click", function () {
 function PrintPage() {
     window.print()
 }
+
+/* Update user rights from Admin screen */
+
+function toggleViewOnly(cb, id) {
+    let newValue = cb.checked;
+    var postJson = {};
+    var postUrl = "/api/user/updateViewOnlyRights";
+    cb.enabled = false;
+
+    postJson.BoBuser_id = id;
+    postJson.is_ViewOnly = newValue;
+    $.ajax(postUrl, {
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(postJson),
+        success: function (data, status, xhr) {
+            cb.enabled = true;
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("Error: " + errorMessage);
+            cb.checked = !newValue;
+            cb.enabled = true;
+        }
+    });
+}
+
+function toggleAddsEnabled(cb, id) {
+    let newValue = cb.checked;
+    var postJson = {};
+    var postUrl = "/api/user/updateAddRights";
+    cb.enabled = false;
+
+    postJson.BoBuser_id = id;
+    postJson.adds_enabled = newValue;
+    $.ajax(postUrl, {
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(postJson),
+        success: function (data, status, xhr) {
+            cb.enabled = true;
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("Error: " + errorMessage);
+            cb.checked = !newValue;
+            cb.enabled = true;
+        }
+    });
+}
+
+function toggleEditsEnabled(cb, id) {
+    let newValue = cb.checked;
+    var postJson = {};
+    var postUrl = "/api/user/updateEditRights";
+    cb.enabled = false;
+
+    postJson.BoBuser_id = id;
+    postJson.edits_enabled = newValue;
+    $.ajax(postUrl, {
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(postJson),
+        success: function (data, status, xhr) {
+            cb.enabled = true;
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("Error: " + errorMessage);
+            cb.checked = !newValue;
+            cb.enabled = true;
+        }
+    });
+}
+
+function toggleDeletesEnabled(cb, id) {
+    let newValue = cb.checked;
+    var postJson = {};
+    var postUrl = "/api/user/updateDeleteRights";
+    cb.enabled = false;
+
+    postJson.BoBuser_id = id;
+    postJson.deletes_enabled = newValue;
+    $.ajax(postUrl, {
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(postJson),
+        success: function (data, status, xhr) {
+            cb.enabled = true;
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("Error: " + errorMessage);
+            cb.checked = !newValue;
+            cb.enabled = true;
+        }
+    });
+}
+
+function toggleIsAdmin(cb, id) {
+    let newValue = cb.checked;
+    var postJson = {};
+    var postUrl = "/api/user/updateAdminRights";
+    cb.enabled = false;
+
+    postJson.BoBuser_id = id;
+    postJson.is_Admin = newValue;
+    $.ajax(postUrl, {
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(postJson),
+        success: function (data, status, xhr) {
+            cb.enabled = true;
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("Error: " + errorMessage);
+            cb.checked = !newValue;
+            cb.enabled = true;
+        }
+    });
+}

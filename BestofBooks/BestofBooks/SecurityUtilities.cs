@@ -15,5 +15,10 @@ namespace BestofBooks
             }
             return BCrypt.Net.BCrypt.HashPassword(password, 12);
         }
+
+        public static bool userLoggedIn (string hash, string password)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hash);
+        }
     }
 }

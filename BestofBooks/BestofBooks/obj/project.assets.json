@@ -1098,23 +1098,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\derek\\.nuget\\packages\\": {},
+    "C:\\Users\\basso\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\derek\\Documents\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\BestofBooks.csproj",
+      "projectUniqueName": "C:\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\BestofBooks.csproj",
       "projectName": "BestofBooks",
-      "projectPath": "C:\\Users\\derek\\Documents\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\BestofBooks.csproj",
-      "packagesPath": "C:\\Users\\derek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\derek\\Documents\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\obj\\",
+      "projectPath": "C:\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\BestofBooks.csproj",
+      "packagesPath": "C:\\Users\\basso\\.nuget\\packages\\",
+      "outputPath": "C:\\GitHub\\BestofBooks\\BestofBooks\\BestofBooks\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\derek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\basso\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1170,12 +1170,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.17, 5.0.17]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1184,7 +1178,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -24,6 +24,7 @@
         <option value="" disabled selected>Select Genre</option>
     </select>
 
+    @*need to pull author names from DB and make it searchable*@
     <div class="dropdown">
         <button onclick="dropdownState()" class="dropbtn" style="height:1.6em">Select Author</button>
         <div id="authorDropdown" class="dropdown-content">
@@ -31,6 +32,7 @@
         </div>
     </div>
 
+    @*Need to connect these options to the DB*@
     <select name="irInStock" id="irInStock" asp-for="@Model.filters.InStock" style="background-color:#F5F5F5; text-align:center; height:1.6em">
         <option value="" disabled selected>Select In Stock</option>
         <option value="all">All</option>
@@ -38,6 +40,7 @@
         <option value="out stock">Out of Stock</option>
     </select>
 
+    @*Add functionality to search button to trigger stored procedure based on parameters*@
     <div class="container text-center" style="padding: 1em 0 1em 0">
         <button id="SearchBtn" name="inventoryReportSearchBtn">Search</button>
     </div>
