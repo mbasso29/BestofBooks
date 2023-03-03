@@ -42,8 +42,7 @@
         <button id="SearchBtn" name="inventoryReportSearchBtn">Search</button>
     </div>
 
-    <form id="availableInventoryForm" runat="server">
-        <asp:Panel id="InventoryPanel">
+    <form id="availableInventoryForm" >
             <table class="table-hover table-bordered align-items-center" id="ListTable" cellspacing=5 cellpadding=5 border="1">
                 <tr class="text-center">
                     <th>ISBN</th>
@@ -70,11 +69,10 @@
                             </tr>
                         }
             </table>
-        </asp:Panel>
     </form>
 
     <div class="container text-center" style="padding: 1em 0 1em 0">
-        <button id="PrintBtn" name="inventoryReportPrintBtn" runat="server">Print</button>
+        <button id="PrintBtn" name="inventoryReportPrintBtn">Print</button>
     </div>
 
 </div>

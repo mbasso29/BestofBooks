@@ -82,6 +82,8 @@ function dropdownStateCHI() {
 document.getElementById("SearchBtn").addEventListener("click", function () {
     showTable("ListTable");
     showBtn("PrintBtn");
+    clearInput("textFilter");
+    resetSelect("searchOptions");
 })
 
 function showTable(table) {
@@ -113,9 +115,15 @@ function resetSelect(selectElement) {
 
 /* Set Print Function */
 document.getElementById("PrintBtn").addEventListener("click", function () { 
-    return PrintPage()
+    return PrintPage("printArea");
 })
 
-function PrintPage() {
-    window.print()
+function PrintPage(elementID) {
+    var prtContent = document.getElementById(elementID);
+    var WinPrint = window.open('', '', 'left=0, top=0, width=800, height=900, toolbar=0, scrollbars=0, status=0');
+    WinPrint.document.write(prtContent.innerHTML);
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close();
 }
