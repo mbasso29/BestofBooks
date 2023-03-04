@@ -296,17 +296,17 @@ namespace AspNetCore
                                                             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d96f201fbca6efb1da43182246a07c2864dd877930295", async () =>
                                                             {
                                                                 WriteLiteral(@"
-            <table class=""table-hover table-bordered align-items-center"" id=""ListTable"" cellspacing=5 cellpadding=5 border=""1"">
-                <tr class=""text-center"">
-                    <th>ISBN</th>
-                    <th>Title</th>
-                    <th>Author First Name</th>
-                    <th>Author Last Name</th>
-                    <th>Genre</th>
-                    <th>Location</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
+                                                                    <table class=""table-hover table-bordered align-items-center"" id=""ListTable"" cellspacing=5 cellpadding=5 border=""1"">
+                                                                        <tr class=""text-center"">
+                                                                            <th>ISBN</th>
+                                                                            <th>Title</th>
+                                                                            <th>Author First Name</th>
+                                                                            <th>Author Last Name</th>
+                                                                            <th>Genre</th>
+                                                                            <th>Location</th>
+                                                                            <th>Price</th>
+                                                                            <th>Quantity</th>
+                                                                        </tr>
 ");
                                                                 for (var i = 0; i < Model.Books.Count(); i++)
                                                                 {
