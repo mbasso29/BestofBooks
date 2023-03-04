@@ -51,39 +51,10 @@ function applyDataMask(field) {
     field.addEventListener('keyup', changed)
 }
 
-/* Report Dropdown Author Button with Search- When the user clicks on the button,
-toggle between hiding and showing the dropdown content, filter */
-function dropdownState() {
-    document.getElementById("authorDropdown").classList.toggle("show");
-}
-
-function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("authorInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("authorDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        txtValue = a[i].textContent || a[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
-        }
-    }
-}
-
-/* Dropdown functionality for datepickers */
-function dropdownStateCHI() {
-    document.getElementById("dateRangeDropdown").classList.toggle("show");
-}
-
 /* Add event listener to Inventory Search buttons */
 document.getElementById("SearchBtn").addEventListener("click", function () {
     showTable("ListTable");
     showBtn("PrintBtn");
-    clearInput("textFilter");
-    resetSelect("searchOptions");
 })
 
 function showTable(table) {
@@ -94,14 +65,6 @@ function showBtn(button) {
     document.getElementById(button).style.visibility = "visible";
 }
 
-
-/* Add clear function to Clear button */
-document.getElementById("ClearBtn").addEventListener("click", function () {
-    clearInput("textFilter");
-    resetSelect("searchOptions");
-
-})
-
 function clearInput(input) {
     document.getElementById(input).value = "";
 }
@@ -110,13 +73,7 @@ function resetSelect(selectElement) {
     document.getElementById(selectElement).selectedIndex = 0;
 }
 
-/* Set qty to 0 when Trash Can is clicked */
-
-
 /* Set Print Function */
-document.getElementById("PrintBtn").addEventListener("click", function () { 
-    return PrintPage("printArea");
-})
 
 function PrintPage(elementID) {
     var prtContent = document.getElementById(elementID);

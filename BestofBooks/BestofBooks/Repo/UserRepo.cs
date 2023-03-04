@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using BestofBooks.Models;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 
 namespace BestofBooks.Repo
 {
@@ -63,6 +64,26 @@ namespace BestofBooks.Repo
             await dbConnection.ExecuteAsync("UpdateRights", param: parameters, commandType: CommandType.StoredProcedure);
 
             return;
+        }
+
+        public async Task<bool> loginUser(string userName, string password, HttpContext context)
+        {
+            List<UserModel> users = await getUsers();
+            var user = users.FirstOrDefault(u => u.username.ToLower() == userName.ToLower());
+            if (user == null)
+            {
+                return false;
+            }
+            bool success = SecurityUtilities.userLoggedIn(user.password, password);
+            if (success)
+            {
+                context.Session.SetInt32("_loggedInUser", user.BoBuser_id);
+            }
+            else
+            {
+                context.Session.SetInt32("_loggedInUser", 0);
+            }
+            return success;
         }
     }
 

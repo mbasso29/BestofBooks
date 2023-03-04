@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[5.0.17, )"
             },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "ScottBrady91.AspNetCore.Identity.BCryptPasswordHasher": {
               "target": "Package",
               "version": "[1.3.0, )"

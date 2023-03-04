@@ -41,7 +41,7 @@ CREATE  TABLE [BoBUser] (
 	user_first           varchar(50)				NOT NULL,
 	user_email           varchar(50)				NOT NULL,
 	username             varchar(100)				NOT NULL,
-	password			 varchar(50)				NOT NULL,
+	password			 varchar(100)				NOT NULL,
 	user_type            varchar(50)				NOT NULL,
 	adds_enabled		 bit		DEFAULT 0		NOT NULL,
 	edits_enabled		 bit		DEFAULT 0		NOT NULL,
