@@ -65,5 +65,21 @@ namespace BestofBooks.Controllers
             await _userRepo.updateUserRights(model.BoBuser_id, "is_ViewOnly", model.is_ViewOnly.Value ? 1 : 0);
             return Ok(new { });
         }
+        [HttpPost]
+        [Route("api/user/logIn")]
+        public async Task<IActionResult> logInUser([FromBody] logInUserModel model)
+        {
+            if (!this.ModelState.IsValid)
+                return BadRequest(this.ModelState);
+            bool userLoggedIn = await _userRepo.loginUser(model.username,model.password,this.HttpContext);
+            if (userLoggedIn)
+            {
+                return Ok(new { });
+            }
+            else
+            {
+                return Unauthorized("Login failed.");
+            }
+        }
     }
 }

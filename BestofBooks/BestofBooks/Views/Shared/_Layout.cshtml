@@ -30,15 +30,30 @@
                         <li class="nav-item" style="padding : 0 10px 0 10px">
                             <a class="navLink" asp-area="" asp-controller="Home" asp-action="Search">Search</a>
                         </li>
+                        @*@if (Model.User != null)*@
+                        @*{*@
                         <li class="nav-item" style="padding : 0 10px 0 10px">
                             <a class="navLink" asp-area="" asp-controller="Home" asp-action="Reports">Reports</a>
                         </li>
+                        @*}*@
+                        @*@if(Model.User != null && Model.User.is_Admin)*@
+                        @*{*@
                         <li class="nav-item" style="padding : 0 10px 0 10px">
                             <a class="navLink" asp-area="" asp-controller="Home" asp-action="Admin">Admin</a>
                         </li>
+                        @*}*@
+                        @*@if(Model.User is null)*@
+                        @*{*@
                         <li class="nav-item" style="padding : 0 10px 0 10px">
                             <a class="loginLink" asp-area="" asp-controller="Home" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
                         </li>
+                        @*}*@
+                        @*@if(Model.User != null)*@
+                        @*{*@
+                        <li class="nav-item" style="padding : 0 10px 0 10px">
+                            <a class="navLink" asp-area="" asp-controller="Home" asp-action="LogOut">Log Out</a>
+                        </li>
+                        @*}*@
                     </ul>
                 </div>
             </div>
@@ -64,15 +79,6 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 
-
 </body>
-
-
-
-@section Scripts
-{
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-    @await Html.PartialAsync("Login", model: new UserModel())
-}
 
 </html>

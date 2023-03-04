@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Inventory";
 }
-@model List<BookModel>
+@model InventoryListViewModel
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,10 +18,12 @@
         <p style="color: #0429AC">Our inventory is displayed below. Please let an employee know if you need any assistance!</p>
     </div>
 </div>
-@*Hide Add button if user logged in does not have add rights*@
+@if(Model.User != null && Model.User.adds_enabled)
+{
 <div class="container text-center" style="padding: .5em 0 .5em 0">
     <button id="addBtn" name="Add" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
 </div>
+}
 <div class="container text-center">
     <table class="table-hover table-bordered align-items-center" id="ListTable" cellspacing=5 cellpadding=5 border="1" style="visibility:visible">
         <tr class="text-center">
@@ -35,7 +37,8 @@
             <th>Quantity</th>
             <th>In Stock</th>
         </tr>
-        @*Hide entire row if user does not have add rights*@
+        @if(Model.User != null && Model.User.adds_enabled)
+        {
         <tr class="hidden text-center">
             <td contenteditable="true" id="isbn_text"><input id="input-style" size="10" type="text" value="___-__-____-_" data-mask="___-__-____-_" /></td>
             <td contenteditable="true" id="title_text"><input id="input-style" type="text" size="15" placeholder="Type the Title here..." /></td>
@@ -46,25 +49,39 @@
             <td contenteditable="true" id="price"><input id="input-style" type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
             <td contenteditable="true" id="quantity"><input id="input-style" type="text" size="2" placeholder="0" /></td>
             <td contenteditable="true" id="Instock"><input id="input-style" type="text" size="5" placeholder="false" /></td>
-            @*Hide trash can if user logged in does not have deletes AND edits rights*@
+            @if (Model.User != null && Model.User.edits_enabled)
+            {
+                <td><span class="edit-row"><i class="fa-solid fa-pen" style="color:green; text-align:center"></i></span></td>
+            }
+            @if(Model.User != null && Model.User.edits_enabled && Model.User.deletes_enabled)
+            {
             <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
+            }
         </tr>
-        @for (var i = 0; i < Model.Count(); i++)
+        }
+        @for (var i = 0; i < Model.Books.Count(); i++)
         {
             @*Make rows editable if user has edit rights --- stored proc to alter info in DB*@
             <tr>
-                <td>@Model[i].ISBN</td>
-                <td>@Model[i].Title</td>
-                <td>@Model[i].AuthorFirst</td>
-                <td>@Model[i].AuthorLast</td>
-                <td>@Model[i].Genre</td>
-                <td>@Model[i].Location</td>
-                <td>@Model[i].Price.ToString("C")</td>
+                <td>@Model.Books[i].ISBN</td>
+                <td>@Model.Books[i].Title</td>
+                <td>@Model.Books[i].AuthorFirst</td>
+                <td>@Model.Books[i].AuthorLast</td>
+                <td>@Model.Books[i].Genre</td>
+                <td>@Model.Books[i].Location</td>
+                <td>@Model.Books[i].Price.ToString("C")</td>
                 @*If Qty = 0, remove row from view*@
-                <td>@Model[i].Quantity</td>
-                <td>@Model[i].InStock</td>
-                @*Hide trash can if user logged in does not have deletes AND edits rights --- set trash can functionality to set QTY to 0*@
+                <td>@Model.Books[i].Quantity</td>
+                <td>@Model.Books[i].InStock</td>
+                @if (Model.User != null && Model.User.edits_enabled)
+                {
+                    <td><span class="edit-row"><i class="fa-solid fa-pen" style="color:green; text-align:center"></i></span></td>
+                }
+                @*Set trash can functionality to set QTY to 0*@
+                @if (Model.User != null && Model.User.edits_enabled && Model.User.deletes_enabled)
+                {
                 <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
+                }
             </tr>
         }
     </table>

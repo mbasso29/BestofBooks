@@ -6,6 +6,7 @@
 <title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
+<script src="~/js/search.js"></script>
 <script src="~/js/site.js"></script>
 <script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
@@ -35,8 +36,7 @@
     <button id="SearchBtn" name="Search" style="color:#004803; border-color:#004803; background-color:#DBD9CA; font-weight:bold">Search</button>
     <button id="ClearBtn" name="Clear" style="color:#004803; border-color:#004803; background-color:#DBD9CA; font-weight:bold">Clear</button>
 </div>
-<div class="container text-center" style="padding: .5em 0 .5em 0" id="printArea">
-     <button id="PrintBtn" name="searchPrintBtn">Print</button>
+<div class="container text-center" style="padding: .5em 0 .5em 0">
      <table class="table-hover table-bordered align-items-center text-center" id="ListTable" cellspacing=5 cellpadding=5 border="1" style="visibility:hidden">
         <tr class="text-center">
             <th>ISBN</th>

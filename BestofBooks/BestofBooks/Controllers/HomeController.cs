@@ -27,8 +27,9 @@ namespace BestofBooks.Controllers
 
         public async Task<IActionResult> InventoryList()
         {
-            List<BookModel> books = await _bookRepo.GetInventoryList();  //change user rights for trashcan and editable content
-            return View(books);
+            List<BookModel> books = await _bookRepo.GetInventoryList();
+            var model = new InventoryListViewModel { Books = books,User = loggedInUser };
+            return View(model);
         }
 
         public IActionResult Privacy()
@@ -88,27 +89,6 @@ namespace BestofBooks.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        private async Task<bool> loginUser(string userName, string password)
-        {
-            List<UserModel> users = await _userRepo.getUsers();
-            var user = users.FirstOrDefault(u => u.username.ToLower() == userName.ToLower());
-            if (user == null)
-            {
-                return false;
-            }
-            bool success = SecurityUtilities.userLoggedIn(user.password, password);
-            if (success)
-            {
-                this.HttpContext.Session.SetInt32("_loggedInUser",user.BoBuser_id);
-            }
-            else
-            {
-                this.HttpContext.Session.SetInt32("_loggedInUser", 0);
-            }
-            return success;
-        }
-
         private bool isUserLoggedIn => this.HttpContext.Session.GetInt32("_loggedInUser") != 0;
 
         private UserModel loggedInUser => _userRepo.getUsers().Result.FirstOrDefault(u => u.BoBuser_id == this.HttpContext.Session.GetInt32("_loggedInUser"));
