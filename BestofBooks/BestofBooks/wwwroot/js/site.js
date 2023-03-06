@@ -65,6 +65,13 @@ function showBtn(button) {
     document.getElementById(button).style.visibility = "visible";
 }
 
+/* Add event listener to Clear buttons */
+document.getElementById("ClearBtn").addEventListener("click", function () {
+    clearInput("textFilter");
+    resetSelect("searchOptions");
+})
+
+
 function clearInput(input) {
     document.getElementById(input).value = "";
 }

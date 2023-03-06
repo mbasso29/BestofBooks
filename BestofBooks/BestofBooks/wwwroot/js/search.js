@@ -8,3 +8,4 @@ document.getElementById("SearchBtn").addEventListener("click", function () {
     clearInput("textFilter");
     resetSelect("searchOptions");
 })
+
