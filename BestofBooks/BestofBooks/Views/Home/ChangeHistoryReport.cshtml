@@ -6,8 +6,8 @@
 <title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
-<script src="~/js/changeHistoryReport.js"></script>
 <script src="~/js/site.js"></script>
+<script src="~/js/changeHistoryReport.js"></script>
 <script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
@@ -41,7 +41,7 @@
             <label for="endDate">End Date:</label>
             <input type="date" id="endDate" name="endDate" required>
             <br />
-            <button class="datergOKBtn" style="margin:.5em">OK</button>
+            <button onclick="returnStateCHI()" class="datergOKBtn" id="dateOKBtn" style="margin:.5em">OK</button>
         </div>
     </div>
 
