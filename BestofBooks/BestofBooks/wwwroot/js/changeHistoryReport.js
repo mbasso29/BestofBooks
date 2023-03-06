@@ -8,6 +8,10 @@ function dropdownStateCHI() {
     document.getElementById("dateRangeDropdown").classList.toggle("show");
 }
 
+function returnStateCHI() {
+    document.getElementById("dateRangeDropdown").classList.toggle("show");
+}
+
 /* Set Print Function */
 window.onload = (event) => {
     document.getElementById("PrintBtn").addEventListener("click", function () {
