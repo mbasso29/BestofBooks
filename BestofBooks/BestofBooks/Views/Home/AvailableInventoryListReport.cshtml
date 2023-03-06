@@ -20,7 +20,7 @@
 <div class="container text-center">
     <p style="color: #0429AC; font-weight:bold; font-size:30px">Available Inventory List Report</p>
 
-    <select name="irGenre" id="irGenre" asp-for="@Model.filters.Genre" asp-items="@Model.Genres" style="background-color:#F5F5F5; text-align:center; height:1.6em">
+    <select name="irGenre" id="irGenre" asp-for="@Model.bookFilters.Genre" asp-items="@Model.bookGenres" style="background-color:#F5F5F5; text-align:center; height:1.6em">
         <option value="" disabled selected>Select Genre</option>
     </select>
 
@@ -28,12 +28,12 @@
     <div class="dropdown">
         <button onclick="dropdownState()" class="dropbtn" style="height:1.6em">Select Author</button>
         <div id="authorDropdown" class="dropdown-content">
-            <input type="text" placeholder="Search..." id="authorInput" onkeyup="filterFunction()" asp-for="@Model.filters.AuthorFullName" />
+            <input type="text" placeholder="Search..." id="authorInput" onkeyup="filterFunction()" asp-for="@Model.bookFilters.AuthorFullName" />
         </div>
     </div>
 
     @*Still Need to connect these options to the DB*@
-    <select name="irInStock" id="irInStock" asp-for="@Model.filters.InStock" style="background-color:#F5F5F5; text-align:center; height:1.6em">
+    <select name="irInStock" id="irInStock" asp-for="@Model.bookFilters.InStock" style="background-color:#F5F5F5; text-align:center; height:1.6em">
         <option value="" disabled selected>Select In Stock</option>
         <option value="all">All</option>
         <option value="in stock">In Stock</option>
@@ -58,18 +58,18 @@
                         <th>Price</th>
                         <th>Quantity</th>
                     </tr>
-                    @for (var i = 0; i < Model.Books.Count(); i++)
+                    @for (var i = 0; i < Model.listBooks.Count(); i++)
                             {
                                 <tr>
-                                    <td>@Model.Books[i].ISBN</td>
-                                    <td>@Model.Books[i].Title</td>
-                                    <td>@Model.Books[i].AuthorFirst</td>
-                                    <td>@Model.Books[i].AuthorLast</td>
-                                    <td>@Model.Books[i].Genre</td>
-                                    <td>@Model.Books[i].Location</td>
-                                    <td>@Model.Books[i].Price.ToString("C")</td>
-                                    <td>@Model.Books[i].Quantity</td>
-                                    <td>@Model.Books[i].InStock</td>
+                                    <td>@Model.listBooks[i].ISBN</td>
+                                    <td>@Model.listBooks[i].Title</td>
+                                    <td>@Model.listBooks[i].AuthorFirst</td>
+                                    <td>@Model.listBooks[i].AuthorLast</td>
+                                    <td>@Model.listBooks[i].Genre</td>
+                                    <td>@Model.listBooks[i].Location</td>
+                                    <td>@Model.listBooks[i].Price.ToString("C")</td>
+                                    <td>@Model.listBooks[i].Quantity</td>
+                                    <td>@Model.listBooks[i].InStock</td>
                                 </tr>
                             }
                 </table>
