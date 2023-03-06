@@ -28,29 +28,33 @@ namespace BestofBooks.Controllers
         public async Task<IActionResult> InventoryList()
         {
             List<BookModel> books = await _bookRepo.GetInventoryList();
-            var model = new InventoryListViewModel { Books = books,User = loggedInUser };
+            var model = new InventoryListViewModel { invListBooks = books,User = loggedInUser };
             return View(model);
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            var model = new BaseViewModel { User= loggedInUser };
+            return View(model);
         }
 
         public async Task<IActionResult> Search()
         {
             List<BookModel> books = await _bookRepo.GetSearchList();  // remove empty space when table isn't shown
-            return View(books);
+            var model = new InventoryListViewModel { invListBooks = books, User = loggedInUser };
+            return View(model);
         }
 
         public IActionResult Reports()
         {
-            return View();
+            var model = new BaseViewModel { User = loggedInUser };
+            return View(model);
         }
 
         public IActionResult CreateAccount()
         {
-            return View();
+            var model = new BaseViewModel {User = loggedInUser};
+            return View(model);
         }
 
         [HttpPost]
@@ -60,28 +64,33 @@ namespace BestofBooks.Controllers
             model.password = SecurityUtilities.HashPassword(model.password);
             model.is_ViewOnly = true;
             _userRepo.createUser(model);
-            return View();
+            var emptyModel = new BaseViewModel { User = loggedInUser };
+            return View(emptyModel);
         }
 
         public async Task<IActionResult> Admin()
         {
-            List<UserModel> users = await _userRepo.getUsers();
-            return View(users);
+            List<UserModel> admins = await _userRepo.getUsers();
+            var model = new UserViewModel { User = loggedInUser, listUsers = admins };
+            return View(model);
         }
 
         public async Task<IActionResult> AvailableInventoryListReport()
         {
             var model = new AvailableReportModel();
-            model.Authors = await _bookRepo.getAuthors();
-            model.Genres = await _bookRepo.getGenres();
-            model.Books = new List<BookModel>();
+            model.bookAuthors = await _bookRepo.getAuthors();
+            model.bookGenres = await _bookRepo.getGenres();
+            model.listBooks = new List<BookModel>();
             return View(model);
         }
 
         public async Task<IActionResult> ChangeHistoryReport()
         {
-            //List<UserModel> users = await _userRepo.getChangeHistory();    //throws error
-            return View();
+            var model = new UserViewModel();
+            model.chUserNames = await _userRepo.getUserNames();
+            model.chUserLast = await _userRepo.getUserLastNames();
+            model.listUsers= new List<UserModel>();
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

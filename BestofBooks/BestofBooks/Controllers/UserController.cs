@@ -71,7 +71,7 @@ namespace BestofBooks.Controllers
         {
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
-            bool userLoggedIn = await _userRepo.loginUser(model.username,model.password,this.HttpContext);
+            bool userLoggedIn = await _userRepo.loginUser(model.logInUsername,model.logInPassword,this.HttpContext);
             if (userLoggedIn)
             {
                 return Ok(new { });
@@ -80,6 +80,16 @@ namespace BestofBooks.Controllers
             {
                 return Unauthorized("Login failed.");
             }
+        }
+
+        [HttpGet]
+        [Route("api/book/getChgHistRpt")]
+        public async Task<IActionResult> getChgHistRpt([FromBody] BookModel model)
+        {
+            if (!this.ModelState.IsValid)
+                return BadRequest(this.ModelState);
+            await _userRepo.getChangeHistory();
+            return Ok(new { });
         }
     }
 }

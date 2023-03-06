@@ -13,7 +13,8 @@
                 dataType: 'json',
                 data: JSON.stringify(postJson),
                 success: function (data, status, xhr) {
-                    location.reload;
+                    debugger;
+                    window.location.reload();
                 },
                 error: function (jqXhr, textStatus, errorMessage) {
                     alert("Error: " + errorMessage);

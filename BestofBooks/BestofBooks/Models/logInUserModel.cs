@@ -2,7 +2,7 @@
 {
     public class logInUserModel
     {
-        public string username { get; set; }
-        public string password { get; set; }
+        public string logInUsername { get; set; }
+        public string logInPassword { get; set; }
     }
 }
