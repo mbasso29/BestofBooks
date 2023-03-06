@@ -9,6 +9,7 @@ function dropdownState() {
     document.getElementById("authorDropdown").classList.toggle("show");
 }
 
+//this filter function is not working, not set up to read from DB
 function filterFunction() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("authorInput");
@@ -25,6 +26,7 @@ function filterFunction() {
     }
 }
 
+//print function not working
 /* Set Print Function */
 window.onload = (event) => {
     document.getElementById("PrintBtn").addEventListener("click", function () {

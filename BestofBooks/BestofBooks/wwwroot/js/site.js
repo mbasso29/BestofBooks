@@ -81,7 +81,7 @@ function resetSelect(selectElement) {
 }
 
 
-
+/*Print function has stopped working*/
 /* Set Print Function */
 function PrintPage(elementID) {
     var prtContent = document.getElementById(elementID);
