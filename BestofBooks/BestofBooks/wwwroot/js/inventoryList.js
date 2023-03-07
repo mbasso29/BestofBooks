@@ -4,6 +4,4 @@
 // Write your JavaScript code.
 
 
-
-//Trash can script still not done
-/* Set qty to 0 when Trash Can is clicked */
+/*Need to add js for edit button to allow fields to be editable*/
