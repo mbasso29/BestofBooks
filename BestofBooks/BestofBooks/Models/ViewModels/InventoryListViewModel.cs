@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BestofBooks.Models
+namespace BestofBooks.Models.ViewModels
 {
     public class InventoryListViewModel : BaseViewModel
     {

@@ -7,7 +7,7 @@ CREATE PROCEDURE CreateNewUser
 @user_first varchar(50),
 @user_email varchar(50),
 @username varchar(100),
-@password varchar(50),
+@password varchar(100),
 @user_type varchar(8),
 @adds_enabled bit = 0,
 @edits_enabled bit = 0,

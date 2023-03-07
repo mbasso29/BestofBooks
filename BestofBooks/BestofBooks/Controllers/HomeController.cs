@@ -1,4 +1,5 @@
 ﻿using BestofBooks.Models;
+using BestofBooks.Models.ViewModels;
 using BestofBooks.Repo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,59 +29,78 @@ namespace BestofBooks.Controllers
         public async Task<IActionResult> InventoryList()
         {
             List<BookModel> books = await _bookRepo.GetInventoryList();
-            var model = new InventoryListViewModel { invListBooks = books,User = loggedInUser };
+            var model = new InventoryListViewModel { invListBooks = books, LoggedInUser = loggedInUser };
             return View(model);
         }
 
         public IActionResult Privacy()
         {
-            var model = new BaseViewModel { User= loggedInUser };
+            var model = new BaseViewModel { LoggedInUser = loggedInUser };
             return View(model);
         }
 
         public async Task<IActionResult> Search()
         {
             List<BookModel> books = await _bookRepo.GetSearchList();  // remove empty space when table isn't shown
-            var model = new InventoryListViewModel { invListBooks = books, User = loggedInUser };
+            var model = new InventoryListViewModel { invListBooks = books, LoggedInUser = loggedInUser };
             return View(model);
         }
 
         public IActionResult Reports()
         {
-            var model = new BaseViewModel { User = loggedInUser };
+            var model = new BaseViewModel { LoggedInUser = loggedInUser };
             return View(model);
         }
 
         public IActionResult CreateAccount()
         {
-            var model = new BaseViewModel {User = loggedInUser};
+            var model = new CreateAccountViewModel { LoggedInUser = loggedInUser, UserToCreate = new UserModel() };
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateAccount(UserModel model)
+        public IActionResult CreateAccount(CreateAccountViewModel model)
         {
-            model.password = SecurityUtilities.HashPassword(model.password);
-            model.is_ViewOnly = true;
-            _userRepo.createUser(model);
-            var emptyModel = new BaseViewModel { User = loggedInUser };
+            model.UserToCreate.password = SecurityUtilities.HashPassword(model.UserToCreate.password);
+            model.UserToCreate.is_ViewOnly = true;
+            _userRepo.createUser(model.UserToCreate);
+            var emptyModel = new CreateAccountViewModel { LoggedInUser = loggedInUser, UserToCreate = new UserModel() };
             return View(emptyModel);
         }
 
         public async Task<IActionResult> Admin()
         {
             List<UserModel> admins = await _userRepo.getUsers();
-            var model = new UserViewModel { User = loggedInUser, listUsers = admins };
+            var model = new UserViewModel { LoggedInUser = loggedInUser, listUsers = admins };
             return View(model);
         }
 
         public async Task<IActionResult> AvailableInventoryListReport()
         {
-            var model = new AvailableReportModel();
+            var model = new AvailableReportViewModel();
             model.bookAuthors = await _bookRepo.getAuthors();
             model.bookGenres = await _bookRepo.getGenres();
             model.listBooks = new List<BookModel>();
+            model.bookFilters = new BookFilters();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AvailableInventoryListReport(AvailableReportViewModel model)
+        {
+            model.bookAuthors = await _bookRepo.getAuthors();
+            model.bookGenres = await _bookRepo.getGenres();
+            model.bookFilters = new BookFilters();
+
+            var filteredList = await _bookRepo.GetSearchList();
+            model.listBooks = filteredList
+                .Where(b => model.bookFilters.Genre == null || b.Genre == model.bookFilters.Genre)
+                .Where(b => model.bookFilters.Author == null || b.AuthorFullName == model.bookFilters.Author)
+                .Where(b => model.bookFilters.Stock == null || model.bookFilters.Stock == "All" || (model.bookFilters.Stock == "instock" && b.InStock) || (model.bookFilters.Stock == "outofstock" && !b.InStock))
+                .ToList();
+
+            model.listBooks = filteredList;
             return View(model);
         }
 
@@ -98,8 +118,14 @@ namespace BestofBooks.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        private bool isUserLoggedIn => this.HttpContext.Session.GetInt32("_loggedInUser") != 0;
 
+        public IActionResult Logout()
+        {
+            this.HttpContext.Session.SetInt32("_loggedInUser", 0);
+            return RedirectToAction("InventoryList");
+        }
+
+        private bool isUserLoggedIn => this.HttpContext.Session.GetInt32("_loggedInUser") != 0;
         private UserModel loggedInUser => _userRepo.getUsers().Result.FirstOrDefault(u => u.BoBuser_id == this.HttpContext.Session.GetInt32("_loggedInUser"));
     }
 }

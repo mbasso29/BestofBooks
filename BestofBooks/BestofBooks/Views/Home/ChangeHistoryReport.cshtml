@@ -1,14 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Change History Report";
 }
-@model UserViewModel
+@model BestofBooks.Models.ViewModels.UserViewModel
 
 <title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
 <script src="~/js/site.js"></script>
 <script src="~/js/changeHistoryReport.js"></script>
-<script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
     <div class="text-center">
@@ -22,12 +21,12 @@
     <p style="color: #0429AC; font-weight:bold; font-size:30px">Change History Report</p>
 
     @*Show usernames from DB as filter options*@
-    <select name="chrUsername" id="chrUsername" asp-for="@Model.User.username" asp-items="@Model.chUserNames" style="background-color:#F5F5F5; text-align:center; height:1.65em">
+    <select name="chrUsername" id="chrUsername" asp-for="@Model.LoggedInUser.username" asp-items="@Model.chUserNames" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         <option value="" disabled selected>Select Username</option>
     </select>
 
     @*Show user last names from DB as filter options*@
-    <select name="chUserLast" id="chUserLast" asp-for="@Model.User.user_last" asp-items="@Model.chUserLast" style="background-color:#F5F5F5; text-align:center; height:1.65em">
+    <select name="chUserLast" id="chUserLast" asp-for="@Model.LoggedInUser.user_last" asp-items="@Model.chUserLast" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         <option value="" disabled selected>Select Last Name</option>
     </select>
 
@@ -76,5 +75,5 @@
 @section Scripts
 {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-    @await Html.PartialAsync("Login", model: new AdminModel())
+    @await Html.PartialAsync("Login")
 }

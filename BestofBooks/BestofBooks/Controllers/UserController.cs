@@ -67,11 +67,11 @@ namespace BestofBooks.Controllers
         }
         [HttpPost]
         [Route("api/user/logIn")]
-        public async Task<IActionResult> logInUser([FromBody] logInUserModel model)
+        public async Task<IActionResult> logInUser([FromBody] LogInUserModel model)
         {
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
-            bool userLoggedIn = await _userRepo.loginUser(model.logInUsername,model.logInPassword,this.HttpContext);
+            bool userLoggedIn = await _userRepo.loginUser(model.Username, model.Password, this.HttpContext);
             if (userLoggedIn)
             {
                 return Ok(new { });
