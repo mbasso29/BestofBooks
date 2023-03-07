@@ -4,6 +4,6 @@ namespace BestofBooks.Models
 {
     public class InventoryListViewModel : BaseViewModel
     {
-        public List<BookModel> Books { get; set; }
+        public List<BookModel> invListBooks { get; set; }
     }
 }

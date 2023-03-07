@@ -10,6 +10,7 @@ using BestofBooks.Models;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 
 namespace BestofBooks.Repo
 {
@@ -37,9 +38,9 @@ namespace BestofBooks.Repo
             string connString = _config.GetConnectionString("BestofBooks");
             using IDbConnection dbConnection = new SqlConnection(connString);
 
-            List<UserModel> users = (await dbConnection.QueryAsync<UserModel>("GetChangeReport", new { }, commandType: CommandType.StoredProcedure)).ToList(); //throwing error
+            List<UserModel> chUsers = (await dbConnection.QueryAsync<UserModel>("GetChangeReport", new { }, commandType: CommandType.StoredProcedure)).ToList(); //throwing error
 
-            return users;
+            return chUsers;
         }
 
         public async Task<UserModel> createUser(UserModel newUser)
@@ -84,6 +85,43 @@ namespace BestofBooks.Repo
                 context.Session.SetInt32("_loggedInUser", 0);
             }
             return success;
+        }
+        public async Task<List<SelectListItem>> getUserNames()
+        {
+            string connString = _config.GetConnectionString("BestofBooks");
+            using IDbConnection dbConnection = new SqlConnection(connString);
+
+            List<UserModel> userName = (await dbConnection.QueryAsync<UserModel>("SELECT username FROM dbo.BoBUser")).ToList();
+
+            return UserNameToSelectListItems(userName);
+        }
+        private List<SelectListItem> UserNameToSelectListItems(IEnumerable<UserModel> users)
+        {
+            return users
+                .Select(l => new SelectListItem
+                {
+                    Text = l.username,
+                })
+                .ToList();
+        }
+
+        public async Task<List<SelectListItem>> getUserLastNames()
+        {
+            string connString = _config.GetConnectionString("BestofBooks");
+            using IDbConnection dbConnection = new SqlConnection(connString);
+
+            List<UserModel> userLastName = (await dbConnection.QueryAsync<UserModel>("SELECT user_last FROM dbo.BoBUser")).ToList();
+
+            return UserLastNameToSelectListItems(userLastName);
+        }
+        private List<SelectListItem> UserLastNameToSelectListItems(IEnumerable<UserModel> users)
+        {
+            return users
+                .Select(l => new SelectListItem
+                {
+                    Text = l.user_last,
+                })
+                .ToList();
         }
     }
 

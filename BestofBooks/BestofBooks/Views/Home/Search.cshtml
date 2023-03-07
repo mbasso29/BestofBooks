@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Search";
 }
-@model List<BookModel>
+@model InventoryListViewModel
 
 <title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -50,18 +50,18 @@
             <th>Quantity</th>
             <th>In Stock</th>
         </tr>
-        @for (var i = 0; i < Model.Count(); i++)
+        @for (var i = 0; i < Model.invListBooks.Count(); i++)
                 {
                     <tr>
-                        <td>@Model[i].ISBN</td>
-                        <td>@Model[i].Title</td>
-                        <td>@Model[i].AuthorFirst</td>
-                        <td>@Model[i].AuthorLast</td>
-                        <td>@Model[i].Genre</td>
-                        <td>@Model[i].Location</td>
-                        <td>@Model[i].Price.ToString("C")</td>
-                        <td>@Model[i].Quantity</td>
-                        <td>@Model[i].InStock</td>
+                        <td>@Model.invListBooks[i].ISBN</td>
+                        <td>@Model.invListBooks[i].Title</td>
+                        <td>@Model.invListBooks[i].AuthorFirst</td>
+                        <td>@Model.invListBooks[i].AuthorLast</td>
+                        <td>@Model.invListBooks[i].Genre</td>
+                        <td>@Model.invListBooks[i].Location</td>
+                        <td>@Model.invListBooks[i].Price.ToString("C")</td>
+                        <td>@Model.invListBooks[i].Quantity</td>
+                        <td>@Model.invListBooks[i].InStock</td>
                     </tr>
                 }
     </table>

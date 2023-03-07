@@ -10,8 +10,10 @@ namespace BestofBooks.Repo
     {
         Task<UserModel> createUser(UserModel newUser);
         Task<List<UserModel>> getChangeHistory();
+        Task<List<SelectListItem>> getUserLastNames();
+        Task<List<SelectListItem>> getUserNames();
         Task<List<UserModel>> getUsers();
-        Task<bool> loginUser(string userName, string password, HttpContext context);
+        Task<bool> loginUser(string userName, string passWord, HttpContext context);
         Task updateUserRights(int BoBuser_id, string updateField, int newValue);
     }
 }

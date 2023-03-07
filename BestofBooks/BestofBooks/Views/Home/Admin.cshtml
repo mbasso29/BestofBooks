@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Admin";
 }
-@model List<UserModel>
+@model UserViewModel
 
 <title>@ViewData["Title"]</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -29,17 +29,17 @@
             <th>Allow Admin</th>
         </tr>
         
-        @for (var i = 0; i < Model.Count(); i++)
+        @for (var i = 0; i < Model.listUsers.Count(); i++)
         {
         <tr class="hidden text-center">
-            <td> @Html.DisplayFor(model => model[i].user_first)</td>
-            <td> @Html.DisplayFor(model => model[i].user_last)</td>
-            <td> @Html.DisplayFor(model => model[i].user_type)</td>
-            <td> <input type="checkbox" onclick="toggleViewOnly(this, @Model[i].BoBuser_id)" @(Model[i].is_ViewOnly ?"checked":"")/></td>
-            <td> <input type="checkbox" onclick="toggleAddsEnabled(this, @Model[i].BoBuser_id)" @(Model[i].adds_enabled ?"checked":"") /></td>
-            <td> <input type="checkbox" onclick="toggleEditsEnabled(this, @Model[i].BoBuser_id)" @(Model[i].edits_enabled ?"checked":"") /></td>
-            <td> <input type="checkbox" onclick="toggleDeletesEnabled(this, @Model[i].BoBuser_id)" @(Model[i].deletes_enabled ?"checked":"") /></td>
-            <td> <input type="checkbox" onclick="toggleIsAdmin(this, @Model[i].BoBuser_id)" @(Model[i].is_Admin ?"checked":"") /></td>
+            <td> @Html.DisplayFor(model => model.listUsers[i].user_first)</td>
+            <td> @Html.DisplayFor(model => model.listUsers[i].user_last)</td>
+            <td> @Html.DisplayFor(model => model.listUsers[i].user_type)</td>
+            <td> <input type="checkbox" onclick="toggleViewOnly(this, @Model.listUsers[i].BoBuser_id)" @(Model.listUsers[i].is_ViewOnly ?"checked":"") /></td>
+            <td> <input type="checkbox" onclick="toggleAddsEnabled(this, @Model.listUsers[i].BoBuser_id)" @(Model.listUsers[i].adds_enabled ?"checked":"") /></td>
+            <td> <input type="checkbox" onclick="toggleEditsEnabled(this, @Model.listUsers[i].BoBuser_id)" @(Model.listUsers[i].edits_enabled ?"checked":"") /></td>
+            <td> <input type="checkbox" onclick="toggleDeletesEnabled(this, @Model.listUsers[i].BoBuser_id)" @(Model.listUsers[i].deletes_enabled ?"checked":"") /></td>
+            <td> <input type="checkbox" onclick="toggleIsAdmin(this, @Model.listUsers[i].BoBuser_id)" @(Model.listUsers[i].is_Admin ?"checked":"") /></td>
         </tr>
         }
     </table>
