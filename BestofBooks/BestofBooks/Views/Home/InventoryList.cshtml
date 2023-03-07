@@ -8,6 +8,7 @@
 <title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
+<script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
     <div class="text-center">
@@ -33,7 +34,6 @@
             <th>Location</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>In Stock</th>
         </tr>
         @if(Model.LoggedInUser != null && Model.LoggedInUser.adds_enabled)
         {
@@ -46,7 +46,6 @@
             <td contenteditable="true" id="location"><input id="input-style" type="text" size="6" placeholder="Type the location here..." /></td>
             <td contenteditable="true" id="price"><input id="input-style" type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
             <td contenteditable="true" id="quantity"><input id="input-style" type="text" size="2" placeholder="0" /></td>
-            <td contenteditable="true" id="Instock"><input id="input-style" type="text" size="5" placeholder="false" /></td>
         </tr>
         }
         @for (var i = 0; i < Model.invListBooks.Count(); i++)
@@ -60,18 +59,11 @@
                 <td id="invListGenre">@Model.invListBooks[i].Genre</td>
                 <td id="invListLocation">@Model.invListBooks[i].Location</td>
                 <td id="invListPrice">@Model.invListBooks[i].Price.ToString("C")</td>
-                @*If Qty = 0, remove row from view*@
                 <td id="invListQty">@Model.invListBooks[i].Quantity</td>
-                <td id="invListInStock">@Model.invListBooks[i].InStock</td>
                 @*Icons no longer display*@
                 @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled)
                 {
                     <td><span class="edit-row"><i class="fa-solid fa-pen" style="color:green; text-align:center"></i></span></td>
-                }
-                @*Set trash can functionality to set QTY to 0*@
-                @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled && Model.LoggedInUser.deletes_enabled)
-                {
-                    <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
                 }
             </tr>
         }
