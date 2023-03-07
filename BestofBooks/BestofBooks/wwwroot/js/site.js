@@ -51,12 +51,6 @@ function applyDataMask(field) {
     field.addEventListener('keyup', changed)
 }
 
-/* Add event listener to Inventory Search buttons */
-document.getElementById("SearchBtn").addEventListener("click", function () {
-    showTable("ListTable");
-    showBtn("PrintBtn");
-})
-
 function showTable(table) {
     document.getElementById(table).style.visibility = "visible";
 }
@@ -66,10 +60,11 @@ function showBtn(button) {
 }
 
 /* Add event listener to Clear buttons */
-document.getElementById("ClearBtn").addEventListener("click", function () {
-    clearInput("textFilter");
-    resetSelect("searchOptions");
-})
+// todo: remove this after relocated in local page js
+//document.getElementById("ClearBtn").addEventListener("click", function () {
+//    clearInput("textFilter");
+//    resetSelect("searchOptions");
+//})
 
 
 function clearInput(input) {

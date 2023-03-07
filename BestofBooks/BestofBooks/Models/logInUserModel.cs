@@ -1,8 +1,12 @@
-﻿namespace BestofBooks.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BestofBooks.Models
 {
-    public class logInUserModel
+    public class LogInUserModel
     {
-        public string logInUsername { get; set; }
-        public string logInPassword { get; set; }
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        public string Password { get; set; }
     }
 }

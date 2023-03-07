@@ -1,14 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Search";
 }
-@model InventoryListViewModel
+@model BestofBooks.Models.ViewModels.InventoryListViewModel
 
 <title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
 <script src="~/js/site.js"></script>
 <script src="~/js/search.js"></script>
-<script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
     <div class="text-center">
@@ -70,5 +69,5 @@
 @section Scripts
 {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-    @await Html.PartialAsync("Login", model: new AdminModel())
+    @await Html.PartialAsync("Login")
 }

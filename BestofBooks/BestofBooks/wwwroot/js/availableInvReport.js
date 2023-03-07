@@ -31,5 +31,6 @@ function filterFunction() {
 window.onload = (event) => {
     document.getElementById("PrintBtn").addEventListener("click", function () {
         return PrintPage("printArea");
-    })
+    });
 };
+

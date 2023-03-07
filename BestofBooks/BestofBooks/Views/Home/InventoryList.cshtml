@@ -1,15 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Inventory";
 }
-@model InventoryListViewModel
+@model BestofBooks.Models.ViewModels.InventoryListViewModel
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>@ViewData["Title"] - BestofBooks</title>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
-<script src="~/js/inventorylist-jquery.js"></script>
-<script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
 
 <div class="container-fluid my-4">
     <div class="text-center">
@@ -18,7 +16,7 @@
         <p style="color: #0429AC">Our inventory is displayed below. Please let an employee know if you need any assistance!</p>
     </div>
 </div>
-@if(Model.User != null && Model.User.adds_enabled)
+@if(Model.LoggedInUser != null && Model.LoggedInUser.adds_enabled)
 {
 <div class="container text-center" style="padding: .5em 0 .5em 0">
     <button id="addBtn" name="Add" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
@@ -37,7 +35,7 @@
             <th>Quantity</th>
             <th>In Stock</th>
         </tr>
-        @if(Model.User != null && Model.User.adds_enabled)
+        @if(Model.LoggedInUser != null && Model.LoggedInUser.adds_enabled)
         {
         <tr class="hidden text-center">
             <td contenteditable="true" id="isbn_text"><input id="input-style" size="10" type="text" value="___-__-____-_" data-mask="___-__-____-_" /></td>
@@ -49,11 +47,11 @@
             <td contenteditable="true" id="price"><input id="input-style" type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
             <td contenteditable="true" id="quantity"><input id="input-style" type="text" size="2" placeholder="0" /></td>
             <td contenteditable="true" id="Instock"><input id="input-style" type="text" size="5" placeholder="false" /></td>
-            @if (Model.User != null && Model.User.edits_enabled)
+            @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled)
             {
                 <td><span class="edit-row"><i class="fa-solid fa-pen" style="color:green; text-align:center"></i></span></td>
             }
-            @if(Model.User != null && Model.User.edits_enabled && Model.User.deletes_enabled)
+            @if(Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled && Model.LoggedInUser.deletes_enabled)
             {
             <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
             }
@@ -73,14 +71,14 @@
                 @*If Qty = 0, remove row from view*@
                 <td id="invListQty">@Model.invListBooks[i].Quantity</td>
                 <td id="invListInStock">@Model.invListBooks[i].InStock</td>
-                @if (Model.User != null && Model.User.edits_enabled)
+                @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled)
                 {
                     <td><span class="edit-row"><i class="fa-solid fa-pen" style="color:green; text-align:center"></i></span></td>
                 }
                 @*Set trash can functionality to set QTY to 0*@
-                @if (Model.User != null && Model.User.edits_enabled && Model.User.deletes_enabled)
+                @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled && Model.LoggedInUser.deletes_enabled)
                 {
-                <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
+                    <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
                 }
             </tr>
         }
@@ -90,5 +88,5 @@
 @section Scripts
     {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-    @await Html.PartialAsync("Login", model: new AdminModel())
+    @await Html.PartialAsync("Login")
 }
