@@ -47,14 +47,6 @@
             <td contenteditable="true" id="price"><input id="input-style" type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
             <td contenteditable="true" id="quantity"><input id="input-style" type="text" size="2" placeholder="0" /></td>
             <td contenteditable="true" id="Instock"><input id="input-style" type="text" size="5" placeholder="false" /></td>
-            @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled)
-            {
-                <td><span class="edit-row"><i class="fa-solid fa-pen" style="color:green; text-align:center"></i></span></td>
-            }
-            @if(Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled && Model.LoggedInUser.deletes_enabled)
-            {
-            <td><span class="delete-row"><i class="fa-solid fa-trash" style="color:red; text-align:center"></i></span></td>
-            }
         </tr>
         }
         @for (var i = 0; i < Model.invListBooks.Count(); i++)
@@ -71,6 +63,7 @@
                 @*If Qty = 0, remove row from view*@
                 <td id="invListQty">@Model.invListBooks[i].Quantity</td>
                 <td id="invListInStock">@Model.invListBooks[i].InStock</td>
+                @*Icons no longer display*@
                 @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled)
                 {
                     <td><span class="edit-row"><i class="fa-solid fa-pen" style="color:green; text-align:center"></i></span></td>

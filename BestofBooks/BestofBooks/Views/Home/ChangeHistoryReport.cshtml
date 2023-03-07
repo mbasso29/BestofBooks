@@ -16,16 +16,14 @@
     </div>
 </div>
 
-
+@*When viewing this report, the navbar now looks like the user is not logged in*@
 <div class="container text-center">
     <p style="color: #0429AC; font-weight:bold; font-size:30px">Change History Report</p>
 
-    @*Show usernames from DB as filter options*@
     <select name="chrUsername" id="chrUsername" asp-for="@Model.LoggedInUser.username" asp-items="@Model.chUserNames" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         <option value="" disabled selected>Select Username</option>
     </select>
 
-    @*Show user last names from DB as filter options*@
     <select name="chUserLast" id="chUserLast" asp-for="@Model.LoggedInUser.user_last" asp-items="@Model.chUserLast" style="background-color:#F5F5F5; text-align:center; height:1.65em">
         <option value="" disabled selected>Select Last Name</option>
     </select>

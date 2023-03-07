@@ -15,7 +15,7 @@
         <img src="@Url.Content("~/Images/BestofBooks2.png")" class="img-fluid" style="width:13em; padding-bottom:1em" />
     </div>
 </div>
-
+@*When in this report, the navbar at the top displays as if the user is not logged in*@
 <div class="container text-center">
     @using (Html.BeginForm("AvailableInventoryListReport", "Home", FormMethod.Post, new { id = "inventoryList" }))
     {
@@ -33,7 +33,6 @@
             </div>
         </div>
 
-        @*Still Need to connect these options to the DB*@
         <select name="irInStock" id="irInStock" asp-for="@Model.bookFilters.Stock" style="background-color:#F5F5F5; text-align:center; height:1.6em">
             <option value="" disabled selected>Select In Stock</option>
             <option value="all">All</option>
