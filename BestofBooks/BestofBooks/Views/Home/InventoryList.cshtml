@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
 <script src="https://kit.fontawesome.com/f9f4cabcd6.js" crossorigin="anonymous"></script>
+<script src="~/js/inventoryList.js"></script>
 
 <div class="container-fluid my-4">
     <div class="text-center">
@@ -20,7 +21,8 @@
 @if(Model.LoggedInUser != null && Model.LoggedInUser.adds_enabled)
 {
 <div class="container text-center" style="padding: .5em 0 .5em 0">
-    <button id="addBtn" name="Add" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
+        @*Tried to add functionality to buttons but does nothing*@
+        <button id="addBtn" name="Add" onclick="add_row" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
 </div>
 }
 <div class="container text-center">
@@ -38,14 +40,14 @@
         @if(Model.LoggedInUser != null && Model.LoggedInUser.adds_enabled)
         {
         <tr class="hidden text-center">
-            <td contenteditable="true" id="isbn_text"><input id="input-style" size="10" type="text" value="___-__-____-_" data-mask="___-__-____-_" /></td>
-            <td contenteditable="true" id="title_text"><input id="input-style" type="text" size="15" placeholder="Type the Title here..." /></td>
-            <td contenteditable="true" id="authorFName_text"><input id="input-style" type="text" size="15" placeholder="Type the Author First Name here..." /></td>
-            <td contenteditable="true" id="authorLName_text"><input id="input-style" type="text" size="15" placeholder="Type the Author Last Name here..." /></td>
-            <td contenteditable="true" id="genre_text"><input id="input-style" type="text" size="10" placeholder="Type the genre here..." /></td>
-            <td contenteditable="true" id="location"><input id="input-style" type="text" size="6" placeholder="Type the location here..." /></td>
-            <td contenteditable="true" id="price"><input id="input-style" type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
-            <td contenteditable="true" id="quantity"><input id="input-style" type="text" size="2" placeholder="0" /></td>
+                <td><input id="new_ISBN" size="10" type="text" placeholder="Enter ISBN" /></td>
+                <td><input id="new_title" type="text" size="15" placeholder="Type the Title here..." /></td>
+                <td><input id="new_authorFirst" type="text" size="15" placeholder="Type the Author First Name here..." /></td>
+                <td><input id="new_authorLast" type="text" size="15" placeholder="Type the Author Last Name here..." /></td>
+                <td><input id="new_genre" type="text" size="10" placeholder="Type the genre here..." /></td>
+                <td><input id="new_location" type="text" size="6" placeholder="Type the location here..." /></td>
+                <td><input id="new_price" type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
+                <td><input id="new_qty" type="text" size="2" placeholder="0" /></td>
         </tr>
         }
         @for (var i = 0; i < Model.invListBooks.Count(); i++)
@@ -60,10 +62,10 @@
                 <td id="invListLocation">@Model.invListBooks[i].Location</td>
                 <td id="invListPrice">@Model.invListBooks[i].Price.ToString("C")</td>
                 <td id="invListQty">@Model.invListBooks[i].Quantity</td>
-                @*Icons no longer display*@
+                @*Tried to add functionality to buttons but does nothing*@
                 @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled)
                 {
-                    <td><span class="edit-row"><i class="fa-solid fa-pen" style="color:green; text-align:center"></i></span></td>
+                    <td><input type="button" id="edit_btn" value="Edit" onclick="edit_row()" style="color:#004803; text-align:center; background-color:#DBD9CA; border-color:#004803; font-weight:bold; font-family:'Bookman Old Style'" /></td>
                 }
             </tr>
         }
