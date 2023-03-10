@@ -19,7 +19,7 @@
 <form method="post">
     <div class="container text-center" style="padding: .5em 0 .5em 0">
 
-        <select name="FilterType" id="searchOptions" style="background-color:#DBD9CA; text-align:center; height:1.6em; color:#004803">
+        <select name="FilterType" id="searchOptions" asp-for="FilterType" style="background-color:#DBD9CA; text-align:center; height:1.6em; color:#004803">
             <option value="" disabled selected>Select Filter Option</option>
             <option value="Genre">Genre</option>
             <option value="LastName">Author Last Name</option>
@@ -28,7 +28,7 @@
         </select>
 
         <div class="text-body" style="padding: .5em 0 .5em 0">
-            <input type="text" id="textFilter" name="Query" maxlength="25" />
+            <input type="text" id="textFilter" asp-for="Query" name="Query" maxlength="25" />
         </div>
     </div>
     <div class="container text-center">
