@@ -13,11 +13,12 @@ CREATE OR ALTER PROCEDURE CreateNewUser
 @edits_enabled bit = 0,
 @deletes_enabled bit = 0,
 @is_admin bit = 0,
-@is_ViewOnly bit = 1
+@is_ViewOnly bit = 1,
+@modifiedBy varchar(30)
 
 AS
 
 BEGIN
-	INSERT INTO BoBUser (user_last,user_first,user_email,username,password,user_type,adds_enabled,edits_enabled,deletes_enabled,is_admin,is_ViewOnly)
-	VALUES (@user_last,@user_first,@user_email,@username,@password,@user_type,@adds_enabled,@edits_enabled,@deletes_enabled,@is_admin,@is_ViewOnly)
+	INSERT INTO BoBUser (user_last,user_first,user_email,username,password,user_type,adds_enabled,edits_enabled,deletes_enabled,is_admin,is_ViewOnly,modifiedBy)
+	VALUES (@user_last,@user_first,@user_email,@username,@password,@user_type,@adds_enabled,@edits_enabled,@deletes_enabled,@is_admin,@is_ViewOnly,@modifiedBy)
 END

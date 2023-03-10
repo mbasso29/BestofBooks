@@ -93,7 +93,7 @@ namespace BestofBooks.Repo
             return books;
         }
 
-        public async Task CreateBook(BookModel newBook)
+        public async Task CreateBook(BookModel newBook, string modifiedBy)
         {
             string connString = _config.GetConnectionString("BestofBooks");
             using IDbConnection dbConnection = new SqlConnection(connString);
@@ -108,14 +108,15 @@ namespace BestofBooks.Repo
                     genre = newBook.Genre,
                     location = newBook.Location,
                     price = newBook.Price,
-                    quantity = newBook.Quantity
+                    quantity = newBook.Quantity,
+                    modifiedBy = modifiedBy
                 }
             };
 
             await dbConnection.ExecuteAsync("CreateNewBook", param: parameters, commandType: CommandType.StoredProcedure);
         }
 
-        public async Task EditBook(BookModel book)
+        public async Task EditBook(BookModel book, string modifiedBy)
         {
             string connString = _config.GetConnectionString("BestofBooks");
             using IDbConnection dbConnection = new SqlConnection(connString);
@@ -131,7 +132,8 @@ namespace BestofBooks.Repo
                     genre = book.Genre,
                     location = book.Location,
                     price = book.Price,
-                    quantity = book.Quantity
+                    quantity = book.Quantity,
+                    modifiedBy = modifiedBy
                 }
             };
 
