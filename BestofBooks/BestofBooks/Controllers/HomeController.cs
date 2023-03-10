@@ -31,6 +31,7 @@ namespace BestofBooks.Controllers
         public async Task<IActionResult> InventoryList()
         {
             List<BookModel> books = await _bookRepo.GetInventoryList();
+            books = books.Where(b => b.Quantity > 0).ToList();
             var model = new InventoryListViewModel
             {
                 invListBooks = books,
@@ -46,6 +47,7 @@ namespace BestofBooks.Controllers
             await _bookRepo.CreateBook(model.newBook);
 
             List<BookModel> books = await _bookRepo.GetInventoryList();
+            books = books.Where(b => b.Quantity > 0).ToList();
             model.invListBooks = books;
             model.LoggedInUser = loggedInUser;
             model.newBook = new BookModel();
@@ -58,6 +60,7 @@ namespace BestofBooks.Controllers
             await _bookRepo.EditBook(model.editBook);
 
             List<BookModel> books = await _bookRepo.GetInventoryList();
+            books = books.Where(b => b.Quantity > 0).ToList();
             model.invListBooks = books;
             model.LoggedInUser = loggedInUser;
             model.newBook = new BookModel();
