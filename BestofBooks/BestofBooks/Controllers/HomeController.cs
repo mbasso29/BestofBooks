@@ -189,7 +189,7 @@ namespace BestofBooks.Controllers
             if (model.StartDate != DateTime.MinValue)
                 records = records.Where(a => a.Modified >= model.StartDate).ToList();
             if (model.EndDate != DateTime.MinValue)
-                records = records.Where(a => a.Modified <= model.EndDate).ToList();
+                records = records.Where(a => a.Modified <= model.EndDate.Date.AddDays(1).AddMinutes(-1)).ToList();
 
             model.Results = records;
             model.LoggedInUser = loggedInUser;

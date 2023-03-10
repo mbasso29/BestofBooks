@@ -16,3 +16,11 @@ function printMe() {
     PrintPage("printArea");
 }
 
+function validateDates(e) {
+    var startDate = $("#beginDate").val();
+    var endDate = $("#endDate").val();
+    if (startDate == "" || endDate == "") {
+        alert('Date range is required.');
+        e.preventDefault();
+    }
+}
