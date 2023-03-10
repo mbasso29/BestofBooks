@@ -13,5 +13,6 @@ namespace BestofBooks.Repo
         Task<List<BookModel>> GetInventoryList();
         Task<List<BookModel>> GetSearchList();
         Task CreateBook(BookModel newBook);
+        Task EditBook(BookModel book);
     }
 }

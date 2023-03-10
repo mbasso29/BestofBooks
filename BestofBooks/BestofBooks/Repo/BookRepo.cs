@@ -114,5 +114,28 @@ namespace BestofBooks.Repo
 
             await dbConnection.ExecuteAsync("CreateNewBook", param: parameters, commandType: CommandType.StoredProcedure);
         }
+
+        public async Task EditBook(BookModel book)
+        {
+            string connString = _config.GetConnectionString("BestofBooks");
+            using IDbConnection dbConnection = new SqlConnection(connString);
+
+            object[] parameters =
+            {
+                new {
+                    bookID = book.Id,
+                    isbn = book.ISBN,
+                    title = book.Title,
+                    authorFirst = book.AuthorFirst,
+                    authorLast = book.AuthorLast,
+                    genre = book.Genre,
+                    location = book.Location,
+                    price = book.Price,
+                    quantity = book.Quantity
+                }
+            };
+
+            await dbConnection.ExecuteAsync("EditBook", param: parameters, commandType: CommandType.StoredProcedure);
+        }
     }
 }

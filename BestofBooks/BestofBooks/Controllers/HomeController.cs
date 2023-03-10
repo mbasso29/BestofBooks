@@ -50,6 +50,18 @@ namespace BestofBooks.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> InventoryListUpdate(InventoryListViewModel model)
+        {
+            await _bookRepo.EditBook(model.editBook);
+
+            List<BookModel> books = await _bookRepo.GetInventoryList();
+            model.invListBooks = books;
+            model.LoggedInUser = loggedInUser;
+            model.newBook = new BookModel();
+            return View("InventoryList", model);
+        }
+
         public IActionResult Privacy()
         {
             var model = new BaseViewModel { LoggedInUser = loggedInUser };

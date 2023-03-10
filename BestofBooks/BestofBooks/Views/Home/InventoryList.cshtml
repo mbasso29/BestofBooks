@@ -50,22 +50,53 @@
         {
             @*Make rows editable if user has edit rights --- stored proc to alter info in DB*@
             <tr>
-                <td id="invListISBN">@Model.invListBooks[i].ISBN</td>
-                <td id="invListTitle">@Model.invListBooks[i].Title</td>
-                <td id="invListAuthorFirst">@Model.invListBooks[i].AuthorFirst</td>
-                <td id="invListAuthorLast">@Model.invListBooks[i].AuthorLast</td>
-                <td id="invListGenre">@Model.invListBooks[i].Genre</td>
-                <td id="invListLocation">@Model.invListBooks[i].Location</td>
-                <td id="invListPrice">@Model.invListBooks[i].Price.ToString("C")</td>
-                <td id="invListQty">@Model.invListBooks[i].Quantity</td>
+                <td id="invListISBN-@Model.invListBooks[i].Id">@Model.invListBooks[i].ISBN</td>
+                <td id="invListTitle-@Model.invListBooks[i].Id">@Model.invListBooks[i].Title</td>
+                <td id="invListAuthorFirst-@Model.invListBooks[i].Id">@Model.invListBooks[i].AuthorFirst</td>
+                <td id="invListAuthorLast-@Model.invListBooks[i].Id">@Model.invListBooks[i].AuthorLast</td>
+                <td id="invListGenre-@Model.invListBooks[i].Id">@Model.invListBooks[i].Genre</td>
+                <td id="invListLocation-@Model.invListBooks[i].Id">@Model.invListBooks[i].Location</td>
+                <td id="invListPrice-@Model.invListBooks[i].Id">@Model.invListBooks[i].Price.ToString("0.00")</td>
+                <td id="invListQty-@Model.invListBooks[i].Id">@Model.invListBooks[i].Quantity</td>
                 @*Tried to add functionality to buttons but does nothing*@
                 @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled)
                 {
-                    <td><input type="button" id="edit_btn" value="Edit" onclick="edit_row()" style="color:#004803; text-align:center; background-color:#DBD9CA; border-color:#004803; font-weight:bold; font-family:'Bookman Old Style'" /></td>
+                    <td><input type="button" id="edit_btn" value="Edit" onclick="edit_row(@Model.invListBooks[i].Id)" style="color:#004803; text-align:center; background-color:#DBD9CA; border-color:#004803; font-weight:bold; font-family:'Bookman Old Style'" /></td>
                 }
             </tr>
         }
     </table>
+</div>
+<div id="editDialog" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/Home/InventoryListUpdate" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Book</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <input type="hidden" id="edit_Id" name="editBook.Id" value=0 />
+                        <table style="text-align: left">
+                            <tr><td>ISBN:</td><td><input id="edit_ISBN" name="editBook.ISBN" size="15" type="text" style="margin-bottom:0" placeholder="Enter ISBN" /></td></tr>
+                            <tr><td>Title:</td><td><input id="edit_title" name="editBook.Title" type="text" size="15" style="margin-bottom:0" placeholder="Type the Title here..." /></td></tr>
+                            <tr><td>Author First Name:</td><td><input id="edit_authorFirst" name="editBook.AuthorFirst" type="text" size="15" style="margin-bottom:0" placeholder="Type the Author First Name here..." /></td></tr>
+                            <tr><td>Auhthor Last Name:</td><td><input id="edit_authorLast" name="editBook.AuthorLast" type="text" size="15" style="margin-bottom:0" placeholder="Type the Author Last Name here..." /></td></tr>
+                            <tr><td>Genre:</td><td><input id="edit_genre" name="editBook.Genre" type="text" size="15" style="margin-bottom:0" placeholder="Type the genre here..." /></td></tr>
+                            <tr><td>Location:</td><td><input id="edit_location" name="editBook.Location" type="text" size="15" style="margin-bottom:0" placeholder="Type the location here..." /></td></tr>
+                            <tr><td>Price:</td><td><input id="edit_price" name="editBook.Price" type="text" inputmode="numeric" pattern="[0-9]+([\.,][0-9]+)?" size="15" style="margin-bottom:0" placeholder="0.00" /></td></tr>
+                            <tr><td>Quantity:</td><td><input id="edit_qty" name="editBook.Quantity" type="text" size="15" style="margin-bottom:0" placeholder="0" /></td></tr>
+                        </table>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Cancel</button>
+                    <input id="saveBtn" class="btn btn-primary" type="submit" name="editSave" value="Save" />
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 @section Scripts
