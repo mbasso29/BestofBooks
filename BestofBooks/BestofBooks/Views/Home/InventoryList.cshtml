@@ -48,7 +48,6 @@
         }
         @for (var i = 0; i < Model.invListBooks.Count(); i++)
         {
-            @*Make rows editable if user has edit rights --- stored proc to alter info in DB*@
             <tr>
                 <td id="invListISBN-@Model.invListBooks[i].Id">@Model.invListBooks[i].ISBN</td>
                 <td id="invListTitle-@Model.invListBooks[i].Id">@Model.invListBooks[i].Title</td>
@@ -58,7 +57,6 @@
                 <td id="invListLocation-@Model.invListBooks[i].Id">@Model.invListBooks[i].Location</td>
                 <td id="invListPrice-@Model.invListBooks[i].Id">@Model.invListBooks[i].Price.ToString("0.00")</td>
                 <td id="invListQty-@Model.invListBooks[i].Id">@Model.invListBooks[i].Quantity</td>
-                @*Tried to add functionality to buttons but does nothing*@
                 @if (Model.LoggedInUser != null && Model.LoggedInUser.edits_enabled)
                 {
                     <td><input type="button" id="edit_btn" value="Edit" onclick="edit_row(@Model.invListBooks[i].Id)" style="color:#004803; text-align:center; background-color:#DBD9CA; border-color:#004803; font-weight:bold; font-family:'Bookman Old Style'" /></td>

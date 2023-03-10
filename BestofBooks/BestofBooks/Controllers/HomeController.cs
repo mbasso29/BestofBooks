@@ -68,10 +68,36 @@ namespace BestofBooks.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Search()
+        public IActionResult Search()
         {
-            List<BookModel> books = await _bookRepo.GetSearchList();  // remove empty space when table isn't shown
-            var model = new InventoryListViewModel { invListBooks = books, LoggedInUser = loggedInUser };
+            var model = new SearchViewModel { LoggedInUser = loggedInUser, Results = new List<BookModel>()};
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(SearchViewModel model)
+        {
+            var books = await _bookRepo.GetInventoryList();
+            switch (model.FilterType)
+            {
+                case "Genre":
+                    books = books.Where(b => b.Genre == model.Query).ToList();
+                    break;
+                case "LastName":
+                    books = books.Where(b => b.AuthorLast == model.Query).ToList();
+                    break;
+                case "FirstName":
+                    books = books.Where(b => b.AuthorFirst == model.Query).ToList();
+                    break;
+                case "Title":
+                    books = books.Where(b => b.Title == model.Query).ToList();
+                    break;
+                default:
+                    books = new List<BookModel>();
+                    break;
+            }
+
+            model.Results = books;
             return View(model);
         }
 
