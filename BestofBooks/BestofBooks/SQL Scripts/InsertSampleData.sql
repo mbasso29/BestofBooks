@@ -80,12 +80,6 @@ VALUES
 
 INSERT INTO dbo.BoBUser
 VALUES
-('Employee','Boss','boss.employee@bestofbooks.com','bemployee','p@sSw0rd','employee',1,1,1,1,0);
+('Employee','Boss','boss.employee@bestofbooks.com','bemployee','9F132EEFC74EC853578861D9E790E839027D2153E05DDEC2F719166719423AD7','employee',1,1,1,1,0);
 
-INSERT INTO dbo.Admin
-VALUES
-(1);
-
-INSERT INTO dbo.Employee
-VALUES
-(1);
+--Note: password for the test admin is 'p@sSw0rd'

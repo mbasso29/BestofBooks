@@ -52,20 +52,6 @@ CREATE  TABLE [BoBUser] (
  );
 GO
 
-CREATE  TABLE [Employee] ( 
-	employee_id          int		IDENTITY(1,1)	NOT NULL UNIQUE,
-	BoBuser_id			 int						NOT NULL,
-	CONSTRAINT pk_empuser PRIMARY KEY  ( employee_id ) 
- );
-GO
-
-CREATE  TABLE [Admin] ( 
-	admin_id             int		IDENTITY(1,1)	NOT NULL UNIQUE,
-	BoBuser_id			 int						NOT NULL,
-	CONSTRAINT pk_adminuser PRIMARY KEY  ( admin_id ) 
- );
-GO
-
 ALTER TABLE Book
 ADD CONSTRAINT book_FK1 
 FOREIGN KEY (author_id) REFERENCES Author(author_id);
@@ -74,16 +60,6 @@ GO
 ALTER TABLE Book
 ADD CONSTRAINT book_FK2 
 FOREIGN KEY (genre_id) REFERENCES Genre(genre_id);
-GO 
-
-ALTER TABLE Admin
-ADD CONSTRAINT admin_FK1 
-FOREIGN KEY (BoBuser_id) REFERENCES BoBUser(BoBuser_id);
-GO 
-
-ALTER TABLE Employee
-ADD CONSTRAINT employee_FK1 
-FOREIGN KEY (BoBuser_id) REFERENCES BoBUser(BoBuser_id);
 GO 
 
 
