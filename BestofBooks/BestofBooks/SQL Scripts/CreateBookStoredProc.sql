@@ -7,7 +7,8 @@
 @genre varchar(50),
 @location varchar(3),
 @price money,
-@quantity int
+@quantity int,
+@modifiedBy varchar(30)
 
 AS
 
@@ -20,7 +21,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		INSERT INTO dbo.Author (author_firstname, author_lastname) VALUES (@authorFirst, @authorLast)
+		INSERT INTO dbo.Author (author_firstname, author_lastname, modifiedby) VALUES (@authorFirst, @authorLast, @modifiedBy)
 		SET @AuthorID = SCOPE_IDENTITY()
 	END
 
@@ -31,11 +32,11 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		INSERT INTO dbo.Genre (genre_type) VALUES (@genre)
+		INSERT INTO dbo.Genre (genre_type, modifiedby) VALUES (@genre, @modifiedBy)
 		SET @GenreID = SCOPE_IDENTITY()
 	END
 
-	INSERT INTO Book (isbn, title, author_id, genre_id, in_stock, quantity, location, price)
+	INSERT INTO Book (isbn, title, author_id, genre_id, in_stock, quantity, location, price, modifiedby)
 	VALUES
 	(
 		@isbn,
@@ -45,7 +46,8 @@ BEGIN
 		CASE WHEN @quantity > 0 THEN 1 ELSE 0 END,
         @quantity,
 		@location,
-		@price
+		@price,
+		@modifiedBy
 	)
 
 END

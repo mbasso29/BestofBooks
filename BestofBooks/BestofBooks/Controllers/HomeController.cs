@@ -44,7 +44,7 @@ namespace BestofBooks.Controllers
         [HttpPost]
         public async Task<IActionResult> InventoryList(InventoryListViewModel model)
         {
-            await _bookRepo.CreateBook(model.newBook);
+            await _bookRepo.CreateBook(model.newBook, loggedInUser.username);
 
             List<BookModel> books = await _bookRepo.GetInventoryList();
             books = books.Where(b => b.Quantity > 0).ToList();
@@ -57,7 +57,7 @@ namespace BestofBooks.Controllers
         [HttpPost]
         public async Task<IActionResult> InventoryListUpdate(InventoryListViewModel model)
         {
-            await _bookRepo.EditBook(model.editBook);
+            await _bookRepo.EditBook(model.editBook, loggedInUser.username);
 
             List<BookModel> books = await _bookRepo.GetInventoryList();
             books = books.Where(b => b.Quantity > 0).ToList();
@@ -125,7 +125,7 @@ namespace BestofBooks.Controllers
         {
             model.UserToCreate.password = SecurityUtilities.HashPassword(model.UserToCreate.password);
             model.UserToCreate.is_ViewOnly = true;
-            _userRepo.createUser(model.UserToCreate);
+            _userRepo.createUser(model.UserToCreate, model.UserToCreate.username);
             var emptyModel = new CreateAccountViewModel { LoggedInUser = loggedInUser, UserToCreate = new UserModel() };
             return View(emptyModel);
         }
@@ -189,7 +189,7 @@ namespace BestofBooks.Controllers
             if (model.StartDate != DateTime.MinValue)
                 records = records.Where(a => a.Modified >= model.StartDate).ToList();
             if (model.EndDate != DateTime.MinValue)
-                records = records.Where(a => a.Modified <= model.EndDate).ToList();
+                records = records.Where(a => a.Modified <= model.EndDate.Date.AddDays(1).AddMinutes(-1)).ToList();
 
             model.Results = records;
             model.LoggedInUser = loggedInUser;

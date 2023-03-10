@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BestofBooks.Controllers
@@ -26,7 +27,7 @@ namespace BestofBooks.Controllers
         {
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
-            await _userRepo.updateUserRights(model.BoBuser_id, "adds_enabled", model.adds_enabled.Value?1:0);
+            await _userRepo.updateUserRights(model.BoBuser_id, "adds_enabled", model.adds_enabled.Value? 1 : 0, loggedInUser.username ?? "unauthorized");
             return Ok(new { });
         }
         [HttpPut]
@@ -35,7 +36,7 @@ namespace BestofBooks.Controllers
         {
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
-            await _userRepo.updateUserRights(model.BoBuser_id, "edits_enabled", model.edits_enabled.Value ? 1 : 0);
+            await _userRepo.updateUserRights(model.BoBuser_id, "edits_enabled", model.edits_enabled.Value ? 1 : 0, loggedInUser.username ?? "unauthorized");
             return Ok(new { });
         }
         [HttpPut]
@@ -44,7 +45,7 @@ namespace BestofBooks.Controllers
         {
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
-            await _userRepo.updateUserRights(model.BoBuser_id, "deletes_enabled", model.deletes_enabled.Value ? 1 : 0);
+            await _userRepo.updateUserRights(model.BoBuser_id, "deletes_enabled", model.deletes_enabled.Value ? 1 : 0, loggedInUser.username ?? "unauthorized");
             return Ok(new { });
         }
         [HttpPut]
@@ -53,7 +54,7 @@ namespace BestofBooks.Controllers
         {
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
-            await _userRepo.updateUserRights(model.BoBuser_id, "is_admin", model.is_Admin.Value ? 1 : 0);
+            await _userRepo.updateUserRights(model.BoBuser_id, "is_admin", model.is_Admin.Value ? 1 : 0, loggedInUser.username ?? "unauthorized");
             return Ok(new { });
         }
         [HttpPut]
@@ -62,7 +63,7 @@ namespace BestofBooks.Controllers
         {
             if (!this.ModelState.IsValid)
                 return BadRequest(this.ModelState);
-            await _userRepo.updateUserRights(model.BoBuser_id, "is_ViewOnly", model.is_ViewOnly.Value ? 1 : 0);
+            await _userRepo.updateUserRights(model.BoBuser_id, "is_ViewOnly", model.is_ViewOnly.Value ? 1 : 0, loggedInUser.username ?? "unauthorized");
             return Ok(new { });
         }
         [HttpPost]
@@ -91,5 +92,7 @@ namespace BestofBooks.Controllers
             await _userRepo.getChangeHistory();
             return Ok(new { });
         }
+
+        private UserModel loggedInUser => _userRepo.getUsers().Result.FirstOrDefault(u => u.BoBuser_id == this.HttpContext.Session.GetInt32("_loggedInUser"));
     }
 }

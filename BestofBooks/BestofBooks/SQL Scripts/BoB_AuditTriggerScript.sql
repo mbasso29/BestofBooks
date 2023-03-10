@@ -18,182 +18,214 @@ CREATE TRIGGER TR_Book_AfterInsert
 ON Book
 AFTER INSERT
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM INSERTED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Book', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Insert');
+('Book', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Insert');
+
 GO
 
 CREATE TRIGGER TR_Book_AfterUpdate
 ON Book
 AFTER UPDATE
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM INSERTED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Book', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Update');
+('Book', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Update');
+
 GO
 
 CREATE TRIGGER TR_Book_AfterDelete
 ON Book
 AFTER DELETE
 AS
-INSERT INTO dbo.Audit
-(table_name, modified_by_user, modified_by_last, modified_date, audit_action)
-Values
-('Book', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Delete');
-GO
 
-CREATE TRIGGER TR_Admin_AfterInsert
-ON Admin
-AFTER INSERT
-AS
-INSERT INTO dbo.Audit
-(table_name, modified_by_user, modified_by_last, modified_date, audit_action)
-Values
-('Admin', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Insert');
-GO
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
 
-CREATE TRIGGER TR_Admin_AfterUpdate
-ON Admin
-AFTER UPDATE
-AS
-INSERT INTO dbo.Audit
-(table_name, modified_by_user, modified_by_last, modified_date, audit_action)
-Values
-('Admin', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Update');
-GO
+SELECT @ModifiedBy = ins.ModifiedBy FROM DELETED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
 
-CREATE TRIGGER TR_Admin_AfterDelete
-ON Admin
-AFTER DELETE
-AS
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Admin', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Delete');
+('Book', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Delete');
 GO
 
 CREATE TRIGGER TR_Author_AfterInsert
 ON Author
 AFTER INSERT
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM INSERTED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Author', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Insert');
+('Author', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Insert');
+
 GO
 
 CREATE TRIGGER TR_Author_AfterUpdate
 ON Author
 AFTER UPDATE
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM INSERTED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Author', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Update');
+('Author', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Update');
+
 GO
 
 CREATE TRIGGER TR_Author_AfterDelete
 ON Author
 AFTER DELETE
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM DELETED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Author', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Delete');
+('Author', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Delete');
+
 GO
 
 CREATE TRIGGER TR_BoBUser_AfterInsert
 ON BoBUser
 AFTER INSERT
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM INSERTED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('BoBUser', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Insert');
+('BoBUser', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Insert');
+
 GO
 
 CREATE TRIGGER TR_BoBUser_AfterUpdate
 ON BoBUser
 AFTER UPDATE
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM INSERTED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('BoBUser', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Update');
+('BoBUser', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Update');
+
 GO
 
 CREATE TRIGGER TR_BoBUser_AfterDelete
 ON BoBUser
 AFTER DELETE
 AS
-INSERT INTO dbo.Audit
-(table_name, modified_by_user, modified_by_last, modified_date, audit_action)
-Values
-('BoBUser', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Delete');
-GO
 
-CREATE TRIGGER TR_Employee_AfterInsert
-ON Employee
-AFTER INSERT
-AS
-INSERT INTO dbo.Audit
-(table_name, modified_by_user, modified_by_last, modified_date, audit_action)
-Values
-('Employee', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Insert');
-GO
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
 
-CREATE TRIGGER TR_Employee_AfterUpdate
-ON Employee
-AFTER UPDATE
-AS
-INSERT INTO dbo.Audit
-(table_name, modified_by_user, modified_by_last, modified_date, audit_action)
-Values
-('Employee', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Update');
-GO
+SELECT @ModifiedBy = ins.ModifiedBy FROM DELETED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
 
-CREATE TRIGGER TR_Employee_AfterDelete
-ON Employee
-AFTER DELETE
-AS
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Employee', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Delete');
+('BoBUser', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Delete');
+
 GO
 
 CREATE TRIGGER TR_Genre_AfterInsert
 ON Genre
 AFTER INSERT
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM INSERTED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Genre', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Insert');
+('Genre', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Insert');
+
 GO
 
 CREATE TRIGGER TR_Genre_AfterUpdate
 ON Genre
 AFTER UPDATE
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM INSERTED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Genre', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Update');
+('Genre', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Update');
+
 GO
 
 CREATE TRIGGER TR_Genre_AfterDelete
 ON Genre
 AFTER DELETE
 AS
+
+DECLARE @ModifiedBy varchar(30)
+DECLARE @ModifiedByLast varchar(30)
+
+SELECT @ModifiedBy = ins.ModifiedBy FROM DELETED ins;
+SELECT @ModifiedByLast = u.user_last FROM dbo.BoBUser u WHERE u.username = @ModifiedBy;
+
 INSERT INTO dbo.Audit
 (table_name, modified_by_user, modified_by_last, modified_date, audit_action)
 Values
-('Genre', SUSER_SNAME(), 'Last Name TBD', GETDATE(), 'Delete');
+('Genre', @ModifiedBy, @ModifiedByLast, GETDATE(), 'Delete');
+
 GO
-
-
-
 

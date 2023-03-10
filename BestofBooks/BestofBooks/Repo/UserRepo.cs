@@ -43,18 +43,35 @@ namespace BestofBooks.Repo
             return chUsers;
         }
 
-        public async Task<UserModel> createUser(UserModel newUser)
+        public async Task<UserModel> createUser(UserModel newUser, string modifiedBy)
         {
             string connString = _config.GetConnectionString("BestofBooks");
             using IDbConnection dbConnection = new SqlConnection(connString);
 
-            object[] parameters = { new { user_last = newUser.user_last, user_first = newUser.user_first, user_email = newUser.user_email, username = newUser.username, password = newUser.password, user_type = newUser.user_type, adds_enabled = newUser.adds_enabled, edits_enabled = newUser.edits_enabled, deletes_enabled = newUser.deletes_enabled, is_admin = newUser.is_Admin, is_ViewOnly = newUser.is_ViewOnly } };
+            object[] parameters =
+            {
+                new
+                {
+                    user_last = newUser.user_last,
+                    user_first = newUser.user_first,
+                    user_email = newUser.user_email,
+                    username = newUser.username,
+                    password = newUser.password,
+                    user_type = newUser.user_type,
+                    adds_enabled = newUser.adds_enabled,
+                    edits_enabled = newUser.edits_enabled,
+                    deletes_enabled = newUser.deletes_enabled,
+                    is_admin = newUser.is_Admin,
+                    is_ViewOnly = newUser.is_ViewOnly,
+                    modifiedBy = modifiedBy
+                }
+            };
             await dbConnection.ExecuteAsync("CreateNewUser", param: parameters, commandType: CommandType.StoredProcedure);
 
             return newUser;
         }
 
-        public async Task updateUserRights(int BoBuser_id, string updateField, int newValue)
+        public async Task updateUserRights(int BoBuser_id, string updateField, int newValue, string modifiedBy)
         {
             string connString = _config.GetConnectionString("BestofBooks");
             using IDbConnection dbConnection = new SqlConnection(connString);
@@ -62,6 +79,7 @@ namespace BestofBooks.Repo
             var parameters = new DynamicParameters();
             parameters.Add("BoBuser_id", BoBuser_id);
             parameters.Add(updateField, newValue);
+            parameters.Add("modifiedBy", modifiedBy);
             await dbConnection.ExecuteAsync("UpdateRights", param: parameters, commandType: CommandType.StoredProcedure);
 
             return;

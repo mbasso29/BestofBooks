@@ -12,7 +12,7 @@ namespace BestofBooks.Repo
         Task<List<SelectListItem>> getGenres();
         Task<List<BookModel>> GetInventoryList();
         Task<List<BookModel>> GetSearchList();
-        Task CreateBook(BookModel newBook);
-        Task EditBook(BookModel book);
+        Task CreateBook(BookModel newBook, string modifiedBy);
+        Task EditBook(BookModel newBook, string modifiedBy);
     }
 }
