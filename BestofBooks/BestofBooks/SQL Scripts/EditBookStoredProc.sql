@@ -1,5 +1,6 @@
-﻿CREATE OR ALTER PROCEDURE CreateNewBook
+﻿CREATE OR ALTER PROCEDURE EditBook
 
+@bookID int,
 @title varchar(100),
 @isbn varchar(13),
 @authorFirst varchar(100),
@@ -35,17 +36,16 @@ BEGIN
 		SET @GenreID = SCOPE_IDENTITY()
 	END
 
-	INSERT INTO Book (isbn, title, author_id, genre_id, in_stock, quantity, location, price)
-	VALUES
-	(
-		@isbn,
-		@title,
-		@AuthorID,
-		@GenreID,
-		CASE WHEN @quantity > 0 THEN 1 ELSE 0 END,
-        @quantity,
-		@location,
-		@price
-	)
+	UPDATE dbo.Book
+	SET
+		isbn = @isbn,
+		title = @title,
+		author_id = @AuthorID,
+		genre_id = @GenreID,
+		in_stock = CASE WHEN @quantity > 0 THEN 1 ELSE 0 END,
+		quantity = @quantity,
+		location = @location,
+		price = @price
+	WHERE book_id = @bookID
 
 END
