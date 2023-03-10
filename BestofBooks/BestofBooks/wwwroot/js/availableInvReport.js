@@ -26,11 +26,7 @@ function filterFunction() {
     }
 }
 
-//print function not working
-/* Set Print Function */
-window.onload = (event) => {
-    document.getElementById("PrintBtn").addEventListener("click", function () {
-        return PrintPage("printArea");
-    });
-};
+function printMe() {
+    PrintPage("printArea");
+}
 

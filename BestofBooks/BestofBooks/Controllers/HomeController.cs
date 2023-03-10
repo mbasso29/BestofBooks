@@ -18,12 +18,14 @@ namespace BestofBooks.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IBookRepo _bookRepo;
         private readonly IUserRepo _userRepo;
+        private readonly IAuditRepo _auditRepo;
 
-        public HomeController(ILogger<HomeController> logger, IBookRepo bookRepo, IUserRepo userRepo)
+        public HomeController(ILogger<HomeController> logger, IBookRepo bookRepo, IUserRepo userRepo, IAuditRepo auditRepo)
         {
             _logger = logger;
             _bookRepo = bookRepo;
             _userRepo = userRepo;
+            _auditRepo = auditRepo;
         }
 
         public async Task<IActionResult> InventoryList()
@@ -98,6 +100,7 @@ namespace BestofBooks.Controllers
             }
 
             model.Results = books;
+            model.LoggedInUser = loggedInUser;
             return View(model);
         }
 
@@ -138,33 +141,55 @@ namespace BestofBooks.Controllers
             model.bookGenres = await _bookRepo.getGenres();
             model.listBooks = new List<BookModel>();
             model.bookFilters = new BookFilters();
+            model.LoggedInUser = loggedInUser;
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> AvailableInventoryListReport(AvailableReportViewModel model)
         {
-            model.bookAuthors = await _bookRepo.getAuthors();
-            model.bookGenres = await _bookRepo.getGenres();
-            model.bookFilters = new BookFilters();
-
             var filteredList = await _bookRepo.GetSearchList();
             model.listBooks = filteredList
                 .Where(b => model.bookFilters.Genre == null || b.Genre == model.bookFilters.Genre)
                 .Where(b => model.bookFilters.Author == null || b.AuthorFullName == model.bookFilters.Author)
-                .Where(b => model.bookFilters.Stock == null || model.bookFilters.Stock == "All" || (model.bookFilters.Stock == "instock" && b.InStock) || (model.bookFilters.Stock == "outofstock" && !b.InStock))
+                .Where(b => model.bookFilters.Stock == null || model.bookFilters.Stock == "all" || (model.bookFilters.Stock == "instock" && b.InStock) || (model.bookFilters.Stock == "outofstock" && !b.InStock))
                 .ToList();
 
-            model.listBooks = filteredList;
+            model.bookAuthors = await _bookRepo.getAuthors();
+            model.bookGenres = await _bookRepo.getGenres();
+            model.LoggedInUser = loggedInUser;
+            model.bookFilters = new BookFilters();
             return View(model);
         }
 
         public async Task<IActionResult> ChangeHistoryReport()
         {
-            var model = new UserViewModel();
-            model.chUserNames = await _userRepo.getUserNames();
-            model.chUserLast = await _userRepo.getUserLastNames();
-            model.listUsers= new List<UserModel>();
+            var model = new ChangeHistoryReportViewModel { LoggedInUser = loggedInUser };
+            model.DimUsernames = await _userRepo.getUserNames();
+            model.DimLastnames = await _userRepo.getUserLastNames();
+            model.Results = new List<AuditRecord>();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeHistoryReport(ChangeHistoryReportViewModel model)
+        {
+            model.DimUsernames = await _userRepo.getUserNames();
+            model.DimLastnames = await _userRepo.getUserLastNames();
+
+            var records = await _auditRepo.GetAuditRecords();
+
+            if (!string.IsNullOrEmpty(model.UsernameFilter))
+                records = records.Where(a => a.ModifiedBy == model.UsernameFilter).ToList();
+            if (!string.IsNullOrEmpty(model.LastnameFilter))
+                records = records.Where(a => a.ModifiedLast == model.LastnameFilter).ToList();
+            if (model.StartDate != DateTime.MinValue)
+                records = records.Where(a => a.Modified >= model.StartDate).ToList();
+            if (model.EndDate != DateTime.MinValue)
+                records = records.Where(a => a.Modified <= model.EndDate).ToList();
+
+            model.Results = records;
+            model.LoggedInUser = loggedInUser;
             return View(model);
         }
 

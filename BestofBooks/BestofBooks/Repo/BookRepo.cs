@@ -47,7 +47,7 @@ namespace BestofBooks.Repo
                 .Select(l => new SelectListItem
                 {
                     Text = $"{l.author_lastname}, {l.author_firstname}",
-                    Value = l.author_id.ToString()
+                    Value = $"{l.author_lastname}, {l.author_firstname}"
                 })
                 .ToList();
         }
@@ -68,7 +68,7 @@ namespace BestofBooks.Repo
                 .Select(l => new SelectListItem
                 {
                     Text = l.genre_type,
-                    Value = l.genre_id.ToString()
+                    Value = l.genre_type
                 })
                 .ToList();
         }

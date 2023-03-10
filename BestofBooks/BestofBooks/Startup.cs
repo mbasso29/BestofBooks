@@ -27,6 +27,7 @@ namespace BestofBooks
             services.AddControllersWithViews();
             services.AddTransient<IBookRepo, BookRepo>();
             services.AddTransient<IUserRepo, UserRepo>();
+            services.AddTransient<IAuditRepo, AuditRepo>();
             services.AddSession();
         }
 
