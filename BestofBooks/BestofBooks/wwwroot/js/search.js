@@ -3,10 +3,8 @@
 
 // Write your JavaScript code.
 
-//Have not been able to get clear on search function working again
-/* Add event listener to Inventory Search buttons */
-document.getElementById("SearchBtn").addEventListener("click", function () {
-    clearInput("textFilter");
-    resetSelect("searchOptions");
-})
-
+function clearFilters() {
+    debugger;
+    $("#searchOptions").val("");
+    $("#textFilter").val("");
+}
