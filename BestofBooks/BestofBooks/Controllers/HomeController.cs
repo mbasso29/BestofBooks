@@ -29,7 +29,24 @@ namespace BestofBooks.Controllers
         public async Task<IActionResult> InventoryList()
         {
             List<BookModel> books = await _bookRepo.GetInventoryList();
-            var model = new InventoryListViewModel { invListBooks = books, LoggedInUser = loggedInUser };
+            var model = new InventoryListViewModel
+            {
+                invListBooks = books,
+                LoggedInUser = loggedInUser,
+                newBook = new BookModel()
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> InventoryList(InventoryListViewModel model)
+        {
+            await _bookRepo.CreateBook(model.newBook);
+
+            List<BookModel> books = await _bookRepo.GetInventoryList();
+            model.invListBooks = books;
+            model.LoggedInUser = loggedInUser;
+            model.newBook = new BookModel();
             return View(model);
         }
 

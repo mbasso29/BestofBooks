@@ -18,13 +18,6 @@
         <p style="color: #0429AC">Our inventory is displayed below. Please let an employee know if you need any assistance!</p>
     </div>
 </div>
-@if(Model.LoggedInUser != null && Model.LoggedInUser.adds_enabled)
-{
-<div class="container text-center" style="padding: .5em 0 .5em 0">
-        @*Tried to add functionality to buttons but does nothing*@
-        <button id="addBtn" name="Add" onclick="add_row" style="color:#004803; border-color:#004803; background-color:#DBD9CA"><i class="fa-solid fa-plus" style="font-family:'Bookman Old Style'; color:#004803">Add</i></button>
-</div>
-}
 <div class="container text-center">
     <table class="table-hover table-bordered align-items-center" id="ListTable" cellspacing=5 cellpadding=5 border="1" style="visibility:visible">
         <tr class="text-center">
@@ -37,18 +30,21 @@
             <th>Price</th>
             <th>Quantity</th>
         </tr>
-        @if(Model.LoggedInUser != null && Model.LoggedInUser.adds_enabled)
+        @if (Model.LoggedInUser != null && Model.LoggedInUser.adds_enabled)
         {
-        <tr class="hidden text-center">
-                <td><input id="new_ISBN" size="10" type="text" placeholder="Enter ISBN" /></td>
-                <td><input id="new_title" type="text" size="15" placeholder="Type the Title here..." /></td>
-                <td><input id="new_authorFirst" type="text" size="15" placeholder="Type the Author First Name here..." /></td>
-                <td><input id="new_authorLast" type="text" size="15" placeholder="Type the Author Last Name here..." /></td>
-                <td><input id="new_genre" type="text" size="10" placeholder="Type the genre here..." /></td>
-                <td><input id="new_location" type="text" size="6" placeholder="Type the location here..." /></td>
-                <td><input id="new_price" type="text" size="4" value="$__.__" data-mask="$__.__" /></td>
-                <td><input id="new_qty" type="text" size="2" placeholder="0" /></td>
-        </tr>
+            <form method="post">
+            <tr class="text-center">
+                <td><input id="new_ISBN" name = "newBook.ISBN" size="10" type="text" style="margin-bottom:0" placeholder="Enter ISBN" /></td>
+                <td><input id="new_title" name = "newBook.Title" type="text" size="15" style="margin-bottom:0" placeholder="Type the Title here..." /></td>
+                <td><input id="new_authorFirst" name = "newBook.AuthorFirst" type="text" size="15" style="margin-bottom:0" placeholder="Type the Author First Name here..." /></td>
+                <td><input id="new_authorLast" name = "newBook.AuthorLast" type="text" size="15" style="margin-bottom:0" placeholder="Type the Author Last Name here..." /></td>
+                <td><input id="new_genre" name = "newBook.Genre" type="text" size="10" style="margin-bottom:0" placeholder="Type the genre here..." /></td>
+                <td><input id="new_location" name = "newBook.Location" type="text" size="6" style="margin-bottom:0" placeholder="Type the location here..." /></td>
+                <td><input id="new_price" name = "newBook.Price" type="text" inputmode="numeric" pattern="[0-9]+([\.,][0-9]+)?" size="4" style="margin-bottom:0" placeholder="0.00" /></td>
+                <td><input id="new_qty" name ="newBook.Quantity" type="text" size="2" style="margin-bottom:0" placeholder="0" /></td>
+                <td><input id="addBtn" type="submit" name="Add" onclick="add_row" value="Add" style="color:#004803; text-align:center; background-color:#DBD9CA; border-color:#004803; font-weight:bold; font-family:'Bookman Old Style'" /></td>
+            </tr>
+            </form>
         }
         @for (var i = 0; i < Model.invListBooks.Count(); i++)
         {

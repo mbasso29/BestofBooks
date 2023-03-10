@@ -12,5 +12,6 @@ namespace BestofBooks.Repo
         Task<List<SelectListItem>> getGenres();
         Task<List<BookModel>> GetInventoryList();
         Task<List<BookModel>> GetSearchList();
+        Task CreateBook(BookModel newBook);
     }
 }
