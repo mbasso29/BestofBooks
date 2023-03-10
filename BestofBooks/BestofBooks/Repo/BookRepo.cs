@@ -92,6 +92,27 @@ namespace BestofBooks.Repo
 
             return books;
         }
-    }
 
+        public async Task CreateBook(BookModel newBook)
+        {
+            string connString = _config.GetConnectionString("BestofBooks");
+            using IDbConnection dbConnection = new SqlConnection(connString);
+
+            object[] parameters =
+            {
+                new {
+                    isbn = newBook.ISBN,
+                    title = newBook.Title,
+                    authorFirst = newBook.AuthorFirst,
+                    authorLast = newBook.AuthorLast,
+                    genre = newBook.Genre,
+                    location = newBook.Location,
+                    price = newBook.Price,
+                    quantity = newBook.Quantity
+                }
+            };
+
+            await dbConnection.ExecuteAsync("CreateNewBook", param: parameters, commandType: CommandType.StoredProcedure);
+        }
+    }
 }

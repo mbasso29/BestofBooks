@@ -1,7 +1,7 @@
 USE BestofBooks
 GO
 
-CREATE PROCEDURE CreateNewUser
+CREATE OR ALTER PROCEDURE CreateNewUser
 
 @user_last varchar(50),
 @user_first varchar(50),
