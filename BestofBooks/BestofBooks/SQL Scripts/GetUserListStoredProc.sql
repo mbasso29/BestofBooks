@@ -1,7 +1,7 @@
 USE BestofBooks
 GO
 
-CREATE PROCEDURE GetUserList
+CREATE OR ALTER PROCEDURE GetUserList
 
 AS
 

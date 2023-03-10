@@ -1,7 +1,7 @@
 USE BestofBooks
 GO
 
-CREATE PROCEDURE GetAvailableInventory
+CREATE OR ALTER PROCEDURE GetAvailableInventory
 @InStock BIT = NULL,
 @AuthorName VARCHAR(255) = NULL,
 @Genre VARCHAR(255) = NULL

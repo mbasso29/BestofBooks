@@ -1,7 +1,7 @@
 USE BestofBooks
 GO
 
-CREATE PROCEDURE GetChangeReport
+CREATE OR ALTER PROCEDURE GetChangeReport
 @Username VARCHAR(255) = NULL,
 @UserLast VARCHAR(255) = NULL,
 @BeginDate DATE = REQUIRED,
