@@ -153,9 +153,9 @@ namespace BestofBooks.Controllers
         {
             var filteredList = await _bookRepo.GetSearchList();
             model.listBooks = filteredList
-                .Where(b => model.bookFilters.Genre == null || b.Genre == model.bookFilters.Genre)
-                .Where(b => model.bookFilters.Author == null || b.AuthorFullName == model.bookFilters.Author)
-                .Where(b => model.bookFilters.Stock == null || model.bookFilters.Stock == "all" || (model.bookFilters.Stock == "instock" && b.InStock) || (model.bookFilters.Stock == "outofstock" && !b.InStock))
+                .Where(b => model.bookFilters == null || model.bookFilters.Genre == null || b.Genre == model.bookFilters.Genre)
+                .Where(b => model.bookFilters == null || model.bookFilters.Author == null || b.AuthorFullName == model.bookFilters.Author)
+                .Where(b => model.bookFilters == null || model.bookFilters.Stock == null || model.bookFilters.Stock == "all" || (model.bookFilters.Stock == "instock" && b.InStock) || (model.bookFilters.Stock == "outofstock" && !b.InStock))
                 .ToList();
 
             model.bookAuthors = await _bookRepo.getAuthors();
